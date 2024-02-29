@@ -1,0 +1,67 @@
+body {
+    background-image: url('./background.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+.main-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.welcome-message {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-style: italic;
+    color: #fff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; 
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+}
+
+.select-role {
+    margin-top: 20px; 
+}
+
+.role-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.role-buttons div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px; 
+}
+
+.role-buttons div button {
+    flex-grow: 1; 
+    margin-right: 30px; 
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
