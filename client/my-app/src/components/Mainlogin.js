@@ -71,6 +71,12 @@ function MainLogin() {
     // const handleSignupClick = () => {
     //     setShowSignup(true);
     // };
+    // const [isActive, setIsActive] = useState(false);
+    const [role, setRole] = useState('student');
+
+    const handleRoleChange = (event) => {
+        setRole(event.target.value);
+    };
 
     return (
         <div className="main-login-container">
@@ -88,6 +94,32 @@ function MainLogin() {
                         <input type="password" placeholder="Password" required />
                         <FaLock className='icon'/>
                     </div>
+                    
+                    {/* <div className = "dropdown-btn">
+                        Choose one
+                        <span className="fas fa caret-down"></span>
+                    </div>
+                    {isActive &&(
+                    <div className="dropdown-content">
+                        <div className="dropdown-item">
+                            Student
+                        </div>
+                        <div className="dropdown-item">
+                            External Participant
+                        </div>
+                        <div className="dropdown-item">
+                            Organizer
+                        </div>
+                    </div>
+                    )} */}
+                    <div className="role-dropdown">
+                        <select value={role} onChange={handleRoleChange}>
+                            <option value="student">Student</option>
+                            <option value="organizer">Organizer</option>
+                            <option value="external">External Participant</option>
+                        </select>
+                    </div>
+                   
                     <div className="remember-me">
                         <label><input type="checkbox" />Remember me</label>
                     </div>
