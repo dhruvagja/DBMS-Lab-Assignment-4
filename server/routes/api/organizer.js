@@ -3,6 +3,7 @@ const router = express.Router();
 const pool = require('../../db');
 
 // create an organizer
+
 router.post('/', async (req, res) => {
     try{
         console.log(req.body.roll);
