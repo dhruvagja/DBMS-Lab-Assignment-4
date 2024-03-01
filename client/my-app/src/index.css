@@ -64,3 +64,14 @@ body {
 .nav li:hover {
   background-color: #777;
 }
+.left-links {
+  display: flex;
+  list-style: none;
+  
+  gap: 4rem;
+}
+
+.right-links {
+  list-style: none; 
+  display: flex;
+}
