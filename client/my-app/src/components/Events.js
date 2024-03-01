@@ -15,6 +15,7 @@ return (
         {events.map(event => (
             <div key={event.id} className="event-box">
             {event.name}
+            <button className="button">Register</button>
             </div>
         ))}
         </div>

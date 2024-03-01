@@ -9,6 +9,7 @@ export default function Navbar() {
       <ul>
         <CustomLink to="/registered-events">Registered Events</CustomLink>
         <CustomLink to="/organising-events">Organising Events</CustomLink>
+        <CustomLink to="/volunteer-events">Volunteering Events</CustomLink>
         <CustomLink to="/logout">Logout</CustomLink>
       </ul>
     </nav>
