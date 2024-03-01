@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.use('/signup', require('./signup'));
 
-// app.use('/login', require('./login'));
+app.use('/login', require('./login'));
 
 // create a student
 
