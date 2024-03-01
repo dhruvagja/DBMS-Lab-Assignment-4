@@ -10,6 +10,7 @@ CREATE TABLE Event (
     EName VARCHAR(255),
     Date DATE,
     Type VARCHAR(255),
+    Description VARCHAR(255),
     PRIMARY KEY (EID)
 );
 
@@ -53,7 +54,17 @@ CREATE TABLE Event_Has_Volunteer (
 CREATE TABLE Participant (
     Name VARCHAR(255),
     PID INT,
-    PRIMARY KEY (PID)
+    CollegeName VARCHAR(255),
+    PRIMARY KEY (PID),
+    FOREIGN KEY (CollegeName) REFERENCES College(Name)
+);
+
+CREATE TABLE Student_Participates (
+    Roll VARCHAR(255),
+    EID INT,
+    PRIMARY KEY (Roll, EID),
+    FOREIGN KEY (Roll) REFERENCES Student(Roll),
+    FOREIGN KEY (EID) REFERENCES Event(EID)
 );
 
 CREATE TABLE Event_Has_Participant (
@@ -64,10 +75,9 @@ CREATE TABLE Event_Has_Participant (
     FOREIGN KEY (PID) REFERENCES Participant(PID) 
 );
 
-CREATE TABLE Participant_from (
-    PID INT,
-    Name VARCHAR(255),
-    PRIMARY KEY (PID, Name),
-    FOREIGN KEY (PID) REFERENCES Participant(PID),
-    FOREIGN KEY (Name) REFERENCES College(Name)
+CREATE TABLE users (
+    id VARCHAR(255),
+    password VARCHAR(255),
+    role VARCHAR(255),
+    PRIMARY KEY (id)
 );
