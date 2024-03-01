@@ -1,0 +1,11 @@
+# POST http://localhost:8081/api/participant
+# Content-Type: application/json
+
+# {
+#     "name": "Jitendra",
+#     "pid": 2,
+#     "collegename": "IITB"
+# }
+
+GET  http://localhost:8081/api/participant/
+
