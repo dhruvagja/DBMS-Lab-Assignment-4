@@ -40,8 +40,8 @@ body {
     padding: 30px 40px;
 }
 
-.wrapper h1 {
-    font-size: 36px;
+.wrapper h2 {
+    font-size: 28px;
     text-align: center;
 }
 
@@ -74,6 +74,82 @@ body {
     top: 50%;
     transform: translateY(-50%);
     font-size: 16px;
+}
+
+/* .wrapper .dropdown{
+    width: 400px;
+    margin: 100px auto;
+    position: relative;
+} */
+
+/* .wrapper .dropdown-btn{
+    padding: 15px 20px;
+    background: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, .06);
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper .dropdown-content{
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, .06);
+    font-weight: 500;
+    color: #333;
+    width: 95%;
+}
+
+.dropdown-content .dropdown-item {
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdown-content .dropdown-item {
+    
+} */
+/* Add styles for the dropdown menu */
+.wrapper .role-dropdown {
+    width: 100%;
+    position: relative;
+    margin: 30px 0; /* Adjust margin as needed */
+}
+
+.role-dropdown select {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 12px 42px 12px 20px;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 10l5 5 5-5z"/></svg>'); /* Add custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+}
+
+/* Adjust the styling of the dropdown arrow icon */
+.role-dropdown select::-ms-expand {
+    display: none; /* Hide arrow in IE10 and IE11 */
+}
+
+/* Adjust the position and styling of the dropdown options */
+.role-dropdown select option {
+    background-color: rgba(0, 0, 0, .5); /* Adjust background color as needed */
+    color: #fff; /* Adjust text color as needed */
+    padding: 10px;
 }
 
 .wrapper .remember-me {
