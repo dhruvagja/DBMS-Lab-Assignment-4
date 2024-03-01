@@ -14,8 +14,9 @@ router.post('/', async (req, res) => {
 
         const salt = bcrypt.genSaltSync();
         const hashedPassword = await bcrypt.hashSync(req.body.password, salt);
-
-        const newuser = await pool.query("INSERT INTO users (id,password) VALUES($1, $2) RETURNING *", [id, hashedPassword]);
+        
+        // NOTE: changed the query to add role
+        const newuser = await pool.query("INSERT INTO users (id,password,role) VALUES($1, $2, $3) RETURNING *", [id, hashedPassword, req.body.role]);
 
         res.status(201).send();
         

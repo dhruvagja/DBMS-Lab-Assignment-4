@@ -13,6 +13,9 @@ router.post('/', async (req, res) => {
 
         const newStudent = await pool.query("INSERT INTO student (roll, name, dept) VALUES($1, $2, $3) RETURNING *", [roll, name, dept]);
         
+        // inserting in volunteer table to maintain the foreign key constraint
+        const newVolunteer = await pool.query("INSERT INTO volunteer (roll) VALUES($1) RETURNING *", [roll]);
+
         res.json(newStudent);
     }
     catch (err){

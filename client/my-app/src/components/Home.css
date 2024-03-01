@@ -8,10 +8,14 @@ body {
   justify-content: center; /* Center the grid horizontally */
   align-items: center; /* Center the grid vertically */
   background: linear-gradient(to bottom right, #add8e6, #010112);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 
 .event-container {
+  margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 50px;
@@ -20,13 +24,30 @@ body {
 }
 
 .event-box {
-  background-color: #f0f0f0;
+  background-color: #f6f7f8;
   border: 1px solid #ccc;
   padding: 10px;
-  width: 300px;
+  width: 350px;
   height: 300px;
   box-sizing: border-box;
   text-align: center;
+  font-weight: bold;
   line-height: 1.2;
+}
+
+.button {
+  transition-duration: 0.4s;
+  background-color: #1e95f7;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  position: absolute;
+  margin-top: 240px;
+  border-color: black;
+}
+
+.button:hover {
+  background-color: #2441a6; 
+  color: white;
 }
 
