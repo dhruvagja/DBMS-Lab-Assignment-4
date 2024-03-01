@@ -5,15 +5,15 @@ import Home from './components/Home'
 
 const App = () => {
   return (
-    <div className='container'>
-      <Home />
-    </div>
+    // <div className='container'>
+    //   <Home />
+    // </div>
     
       
-        // <Routes>
-        //   <Route path="/" element={<Mainlogin />} />
-        //   <Route path="/signup" element={<Signup />} />
-        // </Routes>
+        <Routes>
+          <Route path="/" element={<Mainlogin />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
       
     
   );
