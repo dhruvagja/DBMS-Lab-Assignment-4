@@ -6,6 +6,8 @@ import express from 'express';
 import pool from '../../db.js';
 const router = express.Router();
 
+import authenticateToken from '../../auth.js';
+
 // create an organizer
 
 router.post('/', async (req, res) => {
@@ -40,6 +42,9 @@ router.get('/:roll', async (req, res) => {
 
     try{
         //const { roll } = req.params;
+        if(req.params.roll != req.user.id){
+            res.status(404).json({msg : "Page not found"});
+        }
         const organizer = await pool.query("SELECT * FROM student_manage WHERE roll = $1", [req.params.roll]);
         res.json(organizer.rows[0]);
     }
@@ -67,9 +72,12 @@ router.put('/:roll', async (req, res) => {
 });
 
 // Delete organizer
-router.delete('/:roll', async (req, res) => {
+router.delete('/:roll', authenticateToken,async (req, res) => {
     try{
         const roll = req.params.roll;
+        if(roll != req.user.id){
+            res.status(404).json({msg : "page not found"});
+        }
         const deleteOrganizer = await pool.query("DELETE FROM student_manage WHERE roll = $1", [roll]);
         res.json("Organizer was deleted");
     }
