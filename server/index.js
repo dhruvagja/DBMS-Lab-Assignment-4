@@ -32,6 +32,12 @@ app.use('/api/organizer', require('./routes/api/organizer'));
 // participant
 app.use('/api/participant', require('./routes/api/participant'));
 
+// event
+app.use('/api/event', require('./routes/api/event'));
+
+// registered events
+app.use('/api/registered_events', require('./routes/api/registered_events'));
+
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
