@@ -1,10 +1,11 @@
 import Mainlogin from './components/Mainlogin'
+import Home from './components/Home'
 
 
 const App = () => {
   return (
     <div className='container'>
-      <Mainlogin />
+      <Home />
     </div>
   );
 }
