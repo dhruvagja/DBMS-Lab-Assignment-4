@@ -5,6 +5,7 @@ import Home from './components/Home.js'
 import RegisteredEvents from './components/RegisteredEvents.js';
 import OrganisingEvents from './components/OrganisingEvents.js';
 import VolunteerEvents from './components/VolunteerEvents.js';
+import Logout from './components/Logout.js';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path= "/registered-events" element={<RegisteredEvents />} />
           <Route path= "/organising-events" element={<OrganisingEvents />} />
           <Route path= "/volunteer-events" element={<VolunteerEvents />} />
+          <Route path= "/logout" element={<Logout />} />
         </Routes>
       
     

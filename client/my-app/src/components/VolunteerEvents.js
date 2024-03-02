@@ -12,6 +12,22 @@ import { useEffect, useState } from "react";
 
 
 function VolunteerEvents() {
+
+  // handling unauthorized access
+  const navigate = useNavigate();
+  // const [authenticated, setauthenticated] = useState();
+  let loggedInUser = false;
+  useEffect(() => {
+    loggedInUser = localStorage.getItem("authenticated");
+    console.log(loggedInUser);
+    if (loggedInUser === "false") {
+      console.log("UNAUTHENTICATED");
+      // return <Navigate replace to="/login" />;
+      navigate("/login");
+    }
+    // console.log(authenticated);
+  }, []);
+
   const username = localStorage.getItem('username');
   const password = localStorage.getItem('password');
   const role = localStorage.getItem('role');

@@ -12,6 +12,23 @@ import { useEffect, useState } from "react";
 
 
 function RegisteredEvents() {
+
+  // handling unauthorized access
+  const navigate = useNavigate();
+  // const [authenticated, setauthenticated] = useState();
+  let loggedInUser = false;
+  useEffect(() => {
+    loggedInUser = localStorage.getItem("authenticated");
+    console.log(loggedInUser);
+    if (loggedInUser === "false") {
+      console.log("UNAUTHENTICATED");
+      // return <Navigate replace to="/login" />;
+      navigate("/login");
+    }
+    // console.log(authenticated);
+  }, []);
+
+  // if authorized
   const username = localStorage.getItem('username');
   const password = localStorage.getItem('password');
   const role = localStorage.getItem('role');
@@ -46,11 +63,11 @@ function RegisteredEvents() {
       <div className="event-container">
         {registeredEvents.map(event => (
           <div key={event.id} className="event-box">
-            {event.ename}
+            <p>{event.ename}</p>
             <p>{event.date}</p>
             <p>{event.type}</p>
             <p>{event.description}</p>
-            <button className="button">Register</button>
+            {/* <button className="button">Register</button> */}
           </div>
         ))}
       </div>

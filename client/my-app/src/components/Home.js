@@ -8,20 +8,21 @@ import VolunteerEvents from './VolunteerEvents';
 import Events from './Events';
 import Logout from './Logout';
 import Navbar from './Navbar';
-import { Navigate } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 
 
 const Home = () => {
-
+  const navigate = useNavigate();
   const [authenticated, setauthenticated] = useState();
   let loggedInUser = false;
   useEffect(() => {
     loggedInUser = localStorage.getItem("authenticated");
     console.log(loggedInUser);
-    if (!loggedInUser) {
-      return <Navigate replace to="/login" />;
+    if (loggedInUser === "false") {
+      console.log("UNAUTHENTICATED");
+      // return <Navigate replace to="/login" />;
+      navigate("/login");
+
     }
     console.log(authenticated);
   }, []);
