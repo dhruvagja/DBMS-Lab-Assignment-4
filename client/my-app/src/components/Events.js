@@ -37,6 +37,11 @@ function Events() {
     }, []);
 
     console.log(events);
+    const handleRegister = (eventId) => {
+        // Implement your logic for handling registration here
+        console.log(`Registering for event with ID: ${eventId}`);
+        // Add your code to handle the registration process
+    };
     
 
 return (
@@ -47,11 +52,11 @@ return (
             <p>{event.date}</p>
             <p>{event.type}</p>
             <p>{event.description}</p>
-            <button className="button">Register</button>
+            <button className="button" onClick={() => handleRegister(event.id)}>Register</button>
             </div>
         ))}
-        </div>
-    );
+    </div>
+);
 };
 
 export default Events;
