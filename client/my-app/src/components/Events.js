@@ -103,7 +103,7 @@ function Events() {
             if (registeredEvents[i].eid === eventId) {
                 console.log("Already registered");
                 alert("Already registered");
-                // window.location.reload();
+                window.location.reload();
                 return;
             }
         }
@@ -113,7 +113,7 @@ function Events() {
                 if (volunteerEvents[i].eid === eventId) {
                     console.log("You are already a volunteer for this event!");
                     alert("You are already a volunteer for this event!");
-                    // window.location.reload();
+                    window.location.reload();
                     return;
                 }
             }
@@ -182,7 +182,7 @@ function Events() {
                 if (volunteerEvents[i].eid === eventId) {
                     console.log("Already volunteered");
                     alert("Already volunteered");
-                    // window.location.reload();
+                    window.location.reload();
                     return;
                 }
             }
@@ -192,7 +192,7 @@ function Events() {
             if (registeredEvents[i].eid === eventId) {
                 console.log("You have already registered for this event!");
                 alert("You have already registered for this event!");
-                // window.location.reload();
+                window.location.reload();
                 return;
             }
         }
