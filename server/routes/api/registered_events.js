@@ -51,7 +51,7 @@ router.get('/:id', async (req, res) => {
         //     const allRegisteredEvents = await pool.query("SELECT * FROM event JOIN student_manage on event.eid = student_manage.eid");
         //     res.json(allRegisteredEvents.rows);
         // }
-        else if(role === 'participant'){
+        else if(role === 'external'){
             const allRegisteredEvents = await pool.query("SELECT * FROM event, event_has_participant where event.eid = event_has_participant.eid and participant.pid = $1", [id]);
             res.json(allRegisteredEvents.rows);
         }
