@@ -50,6 +50,12 @@ body {
   right: 10px;
   width: auto;
   border-color: black;
+  bottom: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+
+  /* New styles */
+  width: auto; /* Allow button width to adjust */
+
 }
 
 .button:hover {

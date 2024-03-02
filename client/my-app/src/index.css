@@ -74,4 +74,9 @@ body {
 .right-links {
   list-style: none; 
   display: flex;
+  gap: 2rem;
+}
+
+.nav .bell-icon {
+  transform: translateY(10%);
 }
