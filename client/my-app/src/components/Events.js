@@ -40,7 +40,7 @@ function Events() {
     
 
     console.log(events);
-    const handleRegister = (eventId) => {
+    const handleRegister = async (eventId) => {
         // Implement your logic for handling registration here
         console.log(`Registering for event with ID: ${eventId}`);
 
@@ -49,14 +49,13 @@ function Events() {
             role : role
         }
 
-        fetch(`http://localhost:8081/registered_events/${username}`, {
+        fetch(`http://localhost:8081/api/registered_events/${username}`, {
             method : "POST",
             headers:{
                 'Content-Type' : "application/json"
             },
             body : JSON.stringify(forminfo)
         })
-
         .then(res => res.json())
         .then(data => {
             console.log(`${data} Registered`);
@@ -73,7 +72,7 @@ return (
             <p>{event.id}</p>
             <p>{event.type}</p>
             <p>{event.description}</p>
-            <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
+            <button className="button" onClick={()=>handleRegister(event.eid)}> Register </button>
             </div>
         ))}
     </div>
