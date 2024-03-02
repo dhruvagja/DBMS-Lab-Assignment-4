@@ -13,6 +13,7 @@ router.post('/',  async (req, res) => {
 
     try{
         const id = req.body.id;
+        console.log("pass: ", req.body.password);
         
         const user = await pool.query("SELECT id,password from users where users.id = $1", [id]);
         

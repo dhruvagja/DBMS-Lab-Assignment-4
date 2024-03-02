@@ -4,7 +4,8 @@ import { Link ,useNavigate} from 'react-router-dom'; // Import Link component
 import Signup from './signup'; // Import the Signup component
 import {FaUser, FaLock} from 'react-icons/fa';
 import './MainLogin.css'; // Import custom CSS file for styling
-import Axios from 'axios';
+//import Axios from 'axios';
+import { redirect } from 'react-router-dom';
 import { useEffect } from 'react';
 
 
@@ -17,8 +18,8 @@ function MainLogin() {
     const [authenticated, setauthenticated] = useState(false);
     
 //     const users = [{ username: "Jane", password: "testpassword" }];
-  const HandleLogin = (e) => {
-    // e.preventDefault()
+  const HandleLogin = async (e) => {
+    e.preventDefault()
     // const account = users.find((user) => user.username === username);
     // if (account && account.password === password) {
     //     setauthenticated(true)
@@ -32,6 +33,7 @@ function MainLogin() {
 
     // sending post request to server
     console.log(username);
+    console.log(password);
     // Axios.post("http://localhost:8081/login", {
     //     id : username,
     //     password: password,
@@ -39,6 +41,9 @@ function MainLogin() {
     // }).then((response)=>{
     //     console.log(response);
     // }).catch (error => console.log(error));
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+    localStorage.setItem('role', role);
 
 
     const forminfo = {
@@ -65,10 +70,24 @@ function MainLogin() {
         .then(res => res.json())
         // .then(data => console.log(data));
         .then(data => {
-            console.log("logged in!!!!", " hello ", data);
+            console.log(`${data} Logged in`);
             navigate("/");
+            // redirect("/");
         });
     // },[])
+
+    // await Axios 
+    //     .post("http://localhost:8081/login", {username:username, password:password, role:role})
+    //     .then((res) => {
+    //         console.log(res);
+    //         alert("Logged in");
+    //         // <Redirect to= "/" />
+    //         navigate("/");
+    //     })
+    //     .catch((error) => {
+    //         alert(error.response.data);
+    //         window.location.reload();
+    //     });
 
   };
 
