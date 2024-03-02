@@ -10,67 +10,43 @@ function Events() {
     const role = localStorage.getItem('role');
     const accessToken = localStorage.getItem('accessToken');
 
-    useEffect(() => {
+    // useEffect(() => {
         const url = new URL('http://localhost:8081/api/event');
         //url.searchParams.append('id', username);
         fetch(url, {
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            }
+            // headers: {
+            //     'Authorization': `Bearer ${accessToken}`,
+            //     'Content-Type': 'application/json'
+            // }
 
         })
             .then(res => {
                 if (res.ok) {
                     return res.json();
                 }
+                
             })
-            .then(data => setEvents(data));
-    }, []);
+            .then(data => setEvents(data))
+            .catch(error => {
+                console.log(error);
+            });
+    // }, []);
 
 
 
-    console.log(events);
+    // console.log(events);
     const formatDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
     const [volunteerEvents, setvolunteerEvents] = useState([]);
-    if (role === 'student') {
-        // useEffect(() => {
-            fetch(`http://localhost:8081/api/volunteered_events/${username}`)
-                .then(res => {
-                    if (res.ok) {
-                        return res.json();
-                    }
-                    // else {
-                    //     throw new Error('Failed to fetch data');
-                    // }
-                })
-                .then(data => setvolunteerEvents(data));
-        // }, []);
-    }
 
 
     const [registeredEvents, setregisteredEvents] = useState([]);
-    useEffect(() => {
-        fetch(`http://localhost:8081/api/registered_events/${username}`)
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                // else {
-                //     throw new Error('Failed to fetch data');
-                // }
-            })
-            .then(data => {
-                setregisteredEvents(data);
-            })
+    
 
-    }, []);
-
-    console.log(registeredEvents, username);
+    // console.log(registeredEvents, username);
 
     const handleRegister = async (eventId) => {
         // Implement your logic for handling registration here
@@ -93,7 +69,10 @@ function Events() {
                     //     throw new Error('Failed to fetch data');
                     // }
                 })
-                .then(data => setvolunteerEvents(data));
+                .then(data => setvolunteerEvents(data))
+                .catch(error => {
+                    console.log(error);
+                });
 
         }
         // }, []);
