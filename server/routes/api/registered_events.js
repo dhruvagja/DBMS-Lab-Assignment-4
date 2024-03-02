@@ -8,16 +8,37 @@ const router = express.Router();
 
 import authenticateToken from '../../auth.js';
 
+// create a registered event
+router.post('/:id', async (req, res) => {
+    try{
+        const eid = req.body.eid;
+        const role = req.body.role;
+        console.log(role);
+        if(role === 'student'){
+            const newRegisteredEvent = await pool.query("INSERT INTO student_participates (roll, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
+            res.json(newRegisteredEvent);
+        }
+        else if(role === 'participant'){
+            const newRegisteredEvent = await pool.query("INSERT INTO event_has_participant (pid, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
+            res.json(newRegisteredEvent);
+        }
+        else{
+            res.status(400).json({msg: "Invalid Role"});
+        }
+    }
+    catch (err){
+        console.error(err.message);
+    }
+});
 
-
-
-router.get('/:id', authenticateToken,async (req, res) => {
+router.get('/:id', async (req, res) => {
     try{
         const id = req.params.id;
+        console.log(id);
 
-        if(id != req.user.id){
-            res.status(404).json({msg : "Page not found"});
-        }
+        // if(id != req.user.id){
+        //     res.status(404).json({msg : "Page not found"});
+        // }
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
         const role = user.rows[0].role;
         if(role === 'student'){
