@@ -24,19 +24,43 @@ body {
 }
 
 .event-box {
-  background-color: #f6f7f8;
-  border: 1px solid #ccc;
-  padding: 10px;
+  background-color: #0a0a0a;
+  border: 1px solid #0f0f0f;
+  border-radius: 5%;
+  padding: 15px;
   width: 350px;
   height: 300px;
   box-sizing: border-box;
-  text-align: center;
-  font-weight: bold;
   line-height: 1.2;
   position : relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  opacity: 0.6;
+  color:white;
+}
+.event-name{
+  text-align: left;
+  font-weight:bold;
+  font-size: 25px;
+  
+}
+.event-date {
+  text-align: right;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: -22px;
+}
+.event-type {
+  text-align: left;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 15px;
+}
+.event-description {
+  margin-top: 40px;
+  font-size: 15px;
+  text-align: center;
 }
 
 .button {

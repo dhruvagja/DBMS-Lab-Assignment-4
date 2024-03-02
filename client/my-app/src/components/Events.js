@@ -2,15 +2,6 @@ import React from 'react';
 import './Home.css';
 import { useEffect, useState } from "react";
 
-// const events = [
-//     { eid: 1, ename: 'Mega Event', date: '2022-12-31', type: 'Cultural', description: 'Masti' },
-//     { id: 2, name: 'Sports Fest' },
-//     { id: 3, name: 'Literary Fest' },
-//     { id: 4, name: 'Tech Fest' },
-//     { id: 5, name: 'Cultural Fest' }
-// ];
-
-
 
 function Events() {
 
@@ -73,11 +64,11 @@ function Events() {
         <div className="event-container">
             {events.map(event => (
                 <div key={event.eid} className="event-box">
-                    {event.ename}
-                    <p>{formatDate(event.date)}</p>
-                    <p>{event.id}</p>
-                    <p>{event.type}</p>
-                    <p>{event.description}</p>
+                    <p className="event-name">{event.ename}</p>
+                    <p className="event-date">{formatDate(event.date)}</p>
+                    <p className="event-id">{event.id}</p>
+                    <p className="event-type">{event.type}</p>
+                    <p className="event-description">{event.description}</p>
                     <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
                 </div>
             ))}
