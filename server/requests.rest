@@ -45,8 +45,11 @@ POST http://localhost:8081/api/event
 Content-Type: application/json
 
 {
-    "eid": 1,
-    "ename": "dance"
+    "eid": 3,
+    "ename": "singing",
+    "date": "2024-09-01",
+    "type": "cultural",
+    "description": "masti"
 }
 
 
