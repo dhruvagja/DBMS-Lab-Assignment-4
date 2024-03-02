@@ -210,8 +210,14 @@ function Events() {
                     <p className="event-id">{event.id}</p>
                     <p className="event-type">{event.type}</p>
                     <p className="event-description">{event.description}</p>
-                    <button className="volunteer-button" onClick={() => handleVolunteer(event.eid)}> Volunteer </button>
-                    <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
+                    {role === 'student' ? (
+                        <>
+                            <button className="volunteer-button" onClick={() => handleVolunteer(event.eid)}> Volunteer </button>
+                            <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
+                        </>
+                    ) : (
+                        <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
+                    )}
                 </div>
             ))}
         </div>
