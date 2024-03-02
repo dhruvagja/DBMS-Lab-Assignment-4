@@ -70,7 +70,7 @@ function Events() {
             role: role
         }
 
-        fetch(`http://localhost:8081/api/volunteer_events/${username}`, {
+        fetch(`http://localhost:8081/api/volunteered_events/${username}`, {
             method: "POST",
             headers: {
                 'Content-Type': "application/json"
