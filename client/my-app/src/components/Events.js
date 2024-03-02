@@ -11,12 +11,23 @@ import { useEffect, useState } from "react";
 // ];
 
 
+
 function Events() {
 
     const [events, setEvents] = useState([]);
+    const username = localStorage.getItem('username');
+    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {
-        fetch('http://localhost:8081/api/event')
+        const url = new URL('http://localhost:8081/api/event');
+        //url.searchParams.append('id', username);
+        fetch(url, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+            
+        })
             .then(res => {
                 if (res.ok) {
                     return res.json();

@@ -16,11 +16,11 @@ router.post('/:id', async (req, res) => {
         console.log(role);
         if(role === 'student'){
             const newRegisteredEvent = await pool.query("INSERT INTO student_participates (roll, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
-            res.json(newRegisteredEvent);
+            res.json(newRegisteredEvent.rows);
         }
         else if(role === 'participant'){
             const newRegisteredEvent = await pool.query("INSERT INTO event_has_participant (pid, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
-            res.json(newRegisteredEvent);
+            res.json(newRegisteredEvent.rows );
         }
         else{
             res.status(400).json({msg: "Invalid Role"});
@@ -31,6 +31,7 @@ router.post('/:id', async (req, res) => {
     }
 });
 
+// display all registered events by a user
 router.get('/:id', async (req, res) => {
     try{
         const id = req.params.id;
@@ -42,7 +43,7 @@ router.get('/:id', async (req, res) => {
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
         const role = user.rows[0].role;
         if(role === 'student'){
-            const allRegisteredEvents = await pool.query("SELECT event FROM event,student_participates where event.eid = student_participates.eid and student_participates.roll = $1", [id]);
+            const allRegisteredEvents = await pool.query("SELECT event FROM event, student_participates where event.eid = student_participates.eid and student_participates.roll = $1", [id]);
             res.json(allRegisteredEvents.rows);
         }
         // organizer will get events managed by him

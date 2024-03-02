@@ -12,48 +12,65 @@ import { useEffect, useState } from "react";
 
 
 function RegisteredEvents() {
+
+  // handling unauthorized access
+  const navigate = useNavigate();
+  // const [authenticated, setauthenticated] = useState();
+  let loggedInUser = false;
+  useEffect(() => {
+    loggedInUser = localStorage.getItem("authenticated");
+    console.log(loggedInUser);
+    if (loggedInUser === "false") {
+      console.log("UNAUTHENTICATED");
+      // return <Navigate replace to="/login" />;
+      navigate("/login");
+    }
+    // console.log(authenticated);
+  }, []);
+
+  // if authorized
   const username = localStorage.getItem('username');
   const password = localStorage.getItem('password');
   const role = localStorage.getItem('role');
 
-  const forminfo = {
-    id : username,
-    password : password,
-    role : role
-  }
+  const [registeredEvents, setregisteredEvents] = useState([]);
 
-// useEffect(() => {
-    fetch(`http://localhost:8081/api/registered_events/${username}`, {
-        method : "GET",
-        headers:{
-            'Content-Type' : "application/json"
-        },
-        // body : JSON.stringify(forminfo)
-    })
-    // .then(res =>{
+  useEffect(() => {
+    fetch(`http://localhost:8081/api/registered_events/${username}`)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(data => setregisteredEvents(data));
+  }, []);
 
-    // })
-    // .then(res => res.json())
-    // // .then(data => console.log(data));
-    // .then(data => {
-    //     console.log(`${data} Logged in`);
-    //     setauthenticated(true);
-    //     localStorage.setItem('authenticated', true);
-    //     navigate("/");
-    //     // redirect("/");
-    // });
-// },[])
+  console.log(registeredEvents);
+
+  // add functionality if no events are registered
 
   return (
     <div>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Events />} />
-                <Route path="/registered-events" element={<RegisteredEvents />} />
-                <Route path="/organising-events" element={<OrganisingEvents />} />
-                <Route path="/volunteer-events" element={<VolunteerEvents />} />
-                <Route path="/logout" element={<Logout />} />
-            </Routes>
+      <Navbar />
+      <Routes>
+        {/* <Route path="/" element={<Events />} />
+        <Route path="/registered-events" element={<RegisteredEvents />} />
+        <Route path="/organising-events" element={<OrganisingEvents />} />
+        <Route path="/volunteer-events" element={<VolunteerEvents />} />
+        <Route path="/logout" element={<Logout />} /> */}
+      </Routes>
+
+      <div className="event-container">
+        {registeredEvents.map(event => (
+          <div key={event.id} className="event-box">
+            <p>{event.ename}</p>
+            <p>{event.date}</p>
+            <p>{event.type}</p>
+            <p>{event.description}</p>
+            {/* <button className="button">Register</button> */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

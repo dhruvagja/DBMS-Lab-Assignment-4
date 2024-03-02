@@ -71,6 +71,8 @@ function MainLogin() {
             console.log(`${data} Logged in`);
             setauthenticated(true);
             localStorage.setItem('authenticated', true);
+            localStorage.setItem('accessToken' , data.accessToken);
+            console.log(data.accessToken);
             navigate("/");
             // redirect("/");
         });

@@ -8,7 +8,7 @@ const router = express.Router();
 // add authentication after
 
 // create an event
-router.post('/', async (req, res) => {
+router.post('/',async (req, res) => {
     try{
         const eid = req.body.eid;
         const ename = req.body.ename;
@@ -25,8 +25,9 @@ router.post('/', async (req, res) => {
 });
 
 // display all events
-router.get('/', async (req, res) => {
+router.get('/' ,async (req, res) => {
     try{
+        
         const allEvents = await pool.query("SELECT * FROM event");
         res.json(allEvents.rows);
     }
