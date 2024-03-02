@@ -45,45 +45,44 @@ function Events() {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
-    const handleRegister = (eventId) => {
-        const handleRegister = async (eventId) => {
-            // Implement your logic for handling registration here
-            console.log(`Registering for event with ID: ${eventId}`);
 
-            const forminfo = {
-                eid: eventId,
-                role: role
-            }
+    const handleRegister = async (eventId) => {
+        // Implement your logic for handling registration here
+        console.log(`Registering for event with ID: ${eventId}`);
 
-            fetch(`http://localhost:8081/api/registered_events/${username}`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                },
-                body: JSON.stringify(forminfo)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(`${data} Registered`);
-                });
-        };
+        const forminfo = {
+            eid: eventId,
+            role: role
+        }
 
-
-        return (
-            <div className="event-container">
-                {events.map(event => (
-                    <div key={event.eid} className="event-box">
-                        {event.ename}
-                        <p>{formatDate(event.date)}</p>
-                        <p>{event.id}</p>
-                        <p>{event.type}</p>
-                        <p>{event.description}</p>
-                        <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
-                    </div>
-                ))}
-            </div>
-        );
+        fetch(`http://localhost:8081/api/registered_events/${username}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(forminfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(`${data} Registered`);
+            });
     };
+
+
+    return (
+        <div className="event-container">
+            {events.map(event => (
+                <div key={event.eid} className="event-box">
+                    {event.ename}
+                    <p>{formatDate(event.date)}</p>
+                    <p>{event.id}</p>
+                    <p>{event.type}</p>
+                    <p>{event.description}</p>
+                    <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
+                </div>
+            ))}
+        </div>
+    );
 };
 
 export default Events;
