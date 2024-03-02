@@ -33,6 +33,11 @@ function VolunteerEvents() {
   const role = localStorage.getItem('role');
 
   const [volunteerEvents, setvolunteerEvents] = useState([]);
+  
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+};
 
   useEffect(() => {
     fetch(`http://localhost:8081/api/volunteered_events/${username}`)
@@ -45,6 +50,7 @@ function VolunteerEvents() {
   }, []);
 
   console.log(volunteerEvents);
+  
 
   return (
     <div>
@@ -59,12 +65,12 @@ function VolunteerEvents() {
 
       <div className="event-container">
         {volunteerEvents.map(event => (
-          <div key={event.id} className="event-box">
-            {event.ename}
-            <p>{event.date}</p>
-            <p>{event.type}</p>
-            <p>{event.description}</p>
-            <button className="button">Register</button>
+          <div key={event.eid} className="event-box">
+            <p className="event-name">{event.ename}</p>
+            <p className="event-date">{formatDate(event.date)}</p>
+            <p className="event-id">{event.id}</p>
+            <p className="event-type">{event.type}</p>
+            <p className="event-description">{event.description}</p>
           </div>
         ))}
       </div>

@@ -32,13 +32,13 @@ router.post('/', async (req, res) => {
             const newVolunteer = await pool.query("INSERT INTO volunteer (roll) VALUES($1) RETURNING *", [id]);
             res.json(newStudent);
         }
-        else if(req.body.role === 'participant'){
+        else if(req.body.role === 'external'){
             const name = req.body.name;
             const collegename = req.body.collegename;
 
-            const newParticipant = await await pool.query("INSERT INTO participant (name, pid, collegename) VALUES($1, $2, $3) RETURNING *", [name, id, collegename]);
-
+            const newParticipant = await pool.query("INSERT INTO participant (name, pid, collegename) VALUES($1, $2, $3) RETURNING *", [name, id, collegename]);
             res.json(newParticipant);
+           
         }
 
         res.status(201).send();

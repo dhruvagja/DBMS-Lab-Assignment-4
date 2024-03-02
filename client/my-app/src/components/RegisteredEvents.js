@@ -29,49 +29,56 @@ function RegisteredEvents() {
   }, []);
 
   // if authorized
-  const username = localStorage.getItem('username');
+  // const username = localStorage.getItem('username');
   const password = localStorage.getItem('password');
   const role = localStorage.getItem('role');
 
   const [registeredEvents, setregisteredEvents] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    const username = localStorage.getItem('username');
     fetch(`http://localhost:8081/api/registered_events/${username}`)
       .then(res => {
         if (res.ok) {
           return res.json();
         }
+        else {
+          throw new Error('Failed to fetch data');
+        }
       })
-      .then(data => setregisteredEvents(data));
+      .then(data => {
+        setregisteredEvents(data);
+      })
+      .catch(error => {
+        setError(error.message);
+      });
   }, []);
 
   console.log(registeredEvents);
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+};
 
   // add functionality if no events are registered
-
+// alert(registeredEvents[1].ename)
   return (
     <div>
       <Navbar />
-      <Routes>
-        {/* <Route path="/" element={<Events />} />
-        <Route path="/registered-events" element={<RegisteredEvents />} />
-        <Route path="/organising-events" element={<OrganisingEvents />} />
-        <Route path="/volunteer-events" element={<VolunteerEvents />} />
-        <Route path="/logout" element={<Logout />} /> */}
-      </Routes>
-
+     
       <div className="event-container">
         {registeredEvents.map(event => (
-          <div key={event.id} className="event-box">
-            <p>{event.ename}</p>
-            <p>{event.date}</p>
-            <p>{event.type}</p>
-            <p>{event.description}</p>
-            {/* <button className="button">Register</button> */}
+          <div key={event.eid} className="event-box">
+            <p className="event-name">{event.ename}</p>
+            <p className="event-date">{formatDate(event.date)}</p>
+            <p className="event-id">{event.id}</p>
+            <p className="event-type">{event.type}</p>
+            <p className="event-description">{event.description}</p>
           </div>
         ))}
       </div>
-    </div>
+      </div>
   );
 }
 

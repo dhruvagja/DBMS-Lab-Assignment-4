@@ -18,7 +18,7 @@ router.post('/:id', async (req, res) => {
             const newRegisteredEvent = await pool.query("INSERT INTO student_participates (roll, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
             res.json(newRegisteredEvent.rows);
         }
-        else if(role === 'participant'){
+        else if(role === 'external'){
             const newRegisteredEvent = await pool.query("INSERT INTO event_has_participant (pid, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
             res.json(newRegisteredEvent.rows );
         }
@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
         const role = user.rows[0].role;
         if(role === 'student'){
-            const allRegisteredEvents = await pool.query("SELECT event FROM event, student_participates where event.eid = student_participates.eid and student_participates.roll = $1", [id]);
+            const allRegisteredEvents = await pool.query("SELECT * FROM event, student_participates where event.eid = student_participates.eid and student_participates.roll = $1", [id]);
             res.json(allRegisteredEvents.rows);
         }
         // organizer will get events managed by him
@@ -51,8 +51,8 @@ router.get('/:id', async (req, res) => {
         //     const allRegisteredEvents = await pool.query("SELECT * FROM event JOIN student_manage on event.eid = student_manage.eid");
         //     res.json(allRegisteredEvents.rows);
         // }
-        else if(role === 'participant'){
-            const allRegisteredEvents = await pool.query("SELECT event FROM event, event_has_participant where event.eid = event_has_participant.eid and participant.pid = $1", [id]);
+        else if(role === 'external'){
+            const allRegisteredEvents = await pool.query("SELECT * FROM event, event_has_participant where event.eid = event_has_participant.eid and participant.pid = $1", [id]);
             res.json(allRegisteredEvents.rows);
         }
         else{
