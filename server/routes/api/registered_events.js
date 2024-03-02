@@ -16,10 +16,10 @@ router.post('/:id', async (req, res) => {
         console.log(role);
         if(role === 'student'){
             const newRegisteredEvent = await pool.query("INSERT INTO student_participates (roll, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
-            res.json(newRegisteredEvent);
+            res.json(newRegisteredEvent.rows);
         }
         else if(role === 'external'){
-            const newRegisteredEvent = await pool.query("INSERT INTO event_has_participant (pid, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
+            const newRegisteredEvent = await pool.query("INSERT INTO event_has_participant (eid, pid) VALUES($1, $2) RETURNING *", [eid, req.params.id]);
             res.json(newRegisteredEvent);
         }
         else{
@@ -37,22 +37,16 @@ router.get('/:id', async (req, res) => {
         const id = req.params.id;
         console.log(id);
 
-        // if(id != req.user.id){
-        //     res.status(404).json({msg : "Page not found"});
-        // }
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
         const role = user.rows[0].role;
+
         if(role === 'student'){
             const allRegisteredEvents = await pool.query("SELECT * FROM event, student_participates where event.eid = student_participates.eid and student_participates.roll = $1", [id]);
             res.json(allRegisteredEvents.rows);
         }
-        // organizer will get events managed by him
-        // else if(role === 'organizer'){
-        //     const allRegisteredEvents = await pool.query("SELECT * FROM event JOIN student_manage on event.eid = student_manage.eid");
-        //     res.json(allRegisteredEvents.rows);
-        // }
         else if(role === 'external'){
-            const allRegisteredEvents = await pool.query("SELECT * FROM event, event_has_participant where event.eid = event_has_participant.eid and participant.pid = $1", [id]);
+            console.log("external");
+            const allRegisteredEvents = await pool.query("SELECT * FROM event, event_has_participant where event.eid = event_has_participant.eid and event_has_participant.pid = $1", [id]);
             res.json(allRegisteredEvents.rows);
         }
         else{

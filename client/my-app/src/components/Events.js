@@ -36,6 +36,41 @@ function Events() {
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
+    const [volunteerEvents, setvolunteerEvents] = useState([]);
+    if (role === 'student') {
+        // useEffect(() => {
+            fetch(`http://localhost:8081/api/volunteered_events/${username}`)
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                    // else {
+                    //     throw new Error('Failed to fetch data');
+                    // }
+                })
+                .then(data => setvolunteerEvents(data));
+        // }, []);
+    }
+
+
+    const [registeredEvents, setregisteredEvents] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:8081/api/registered_events/${username}`)
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                // else {
+                //     throw new Error('Failed to fetch data');
+                // }
+            })
+            .then(data => {
+                setregisteredEvents(data);
+            })
+
+    }, []);
+
+    console.log(registeredEvents, username);
 
     const handleRegister = async (eventId) => {
         // Implement your logic for handling registration here
@@ -44,6 +79,62 @@ function Events() {
         const forminfo = {
             eid: eventId,
             role: role
+        }
+
+        // const [volunteerEvents, setvolunteerEvents] = useState([]);
+        // useEffect(() => {
+        if (role === 'student') {
+            fetch(`http://localhost:8081/api/volunteered_events/${username}`)
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                    // else {
+                    //     throw new Error('Failed to fetch data');
+                    // }
+                })
+                .then(data => setvolunteerEvents(data));
+
+        }
+        // }, []);
+
+
+        // const [registeredEvents, setregisteredEvents] = useState([]);
+        // useEffect(() => {
+        fetch(`http://localhost:8081/api/registered_events/${username}`)
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                // else {
+                //     throw new Error('Failed to fetch data');
+                // }
+            })
+            .then(data => {
+                setregisteredEvents(data);
+            })
+
+        // }, []);
+
+        for (let i = 0; i < registeredEvents.length; i++) {
+            console.log(registeredEvents[i].eid, eventId);
+            if (registeredEvents[i].eid === eventId) {
+                console.log("Already registered");
+                alert("Already registered");
+                // window.location.reload();
+                return;
+            }
+        }
+
+        if (role === 'student') {
+            for (let i = 0; i < volunteerEvents.length; i++) {
+                if (volunteerEvents[i].eid === eventId) {
+                    console.log("You are already a volunteer for this event!");
+                    alert("You are already a volunteer for this event!");
+                    // window.location.reload();
+                    return;
+                }
+            }
         }
 
         fetch(`http://localhost:8081/api/registered_events/${username}`, {
@@ -58,6 +149,7 @@ function Events() {
                 console.log(`${data} Registered`);
             });
     };
+
     const handleVolunteer = async (eventId) => {
         // Implement your logic for handling volunteering here
         // console.log(`Volunteering for event with ID: ${eventId}`);
@@ -67,35 +159,84 @@ function Events() {
             role: role
         }
 
-        fetch(`http://localhost:8081/api/volunteered_events/${username}`, {
-            method: "POST",
-            headers: {
-                'Content-Type': "application/json"
-            },
-            body: JSON.stringify(forminfo)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(`${data} Volunteered`);
-        });
-    };
-    
+        if (role === 'student') {
+            fetch(`http://localhost:8081/api/volunteered_events/${username}`)
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                    // else {
+                    //     throw new Error('Failed to fetch data');
+                    // }
+                })
+                .then(data => setvolunteerEvents(data));
 
-return (
-    <div className="event-container">
-        {events.map(event => (
-            <div key={event.eid} className="event-box">
-            <p className="event-name">{event.ename}</p>
-            <p className="event-date">{formatDate(event.date)}</p>
-            <p className="event-id">{event.id}</p>
-            <p className="event-type">{event.type}</p>
-            <p className="event-description">{event.description}</p>
-            <button className="volunteer-button" onClick={()=>handleVolunteer(event.eid)}> Volunteer </button>
-            <button className="button" onClick={()=>handleRegister(event.eid)}> Register </button>
-            </div>
-        ))}
-    </div>
-);
+        }
+
+        fetch(`http://localhost:8081/api/registered_events/${username}`)
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                // else {
+                //     throw new Error('Failed to fetch data');
+                // }
+            })
+            .then(data => {
+                setregisteredEvents(data);
+            })
+
+        if (role === 'student') {
+            for (let i = 0; i < volunteerEvents.length; i++) {
+                if (volunteerEvents[i].eid === eventId) {
+                    console.log("Already volunteered");
+                    alert("Already volunteered");
+                    // window.location.reload();
+                    return;
+                }
+            }
+        }
+
+        for (let i = 0; i < registeredEvents.length; i++) {
+            if (registeredEvents[i].eid === eventId) {
+                console.log("You have already registered for this event!");
+                alert("You have already registered for this event!");
+                // window.location.reload();
+                return;
+            }
+        }
+
+        if (role === 'student') {
+            fetch(`http://localhost:8081/api/volunteered_events/${username}`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify(forminfo)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(`${data} Volunteered`);
+                });
+        }
+    };
+
+
+    return (
+        <div className="event-container">
+            {events.map(event => (
+                <div key={event.eid} className="event-box">
+                    <p className="event-name">{event.ename}</p>
+                    <p className="event-date">{formatDate(event.date)}</p>
+                    <p className="event-id">{event.id}</p>
+                    <p className="event-type">{event.type}</p>
+                    <p className="event-description">{event.description}</p>
+                    <button className="volunteer-button" onClick={() => handleVolunteer(event.eid)}> Volunteer </button>
+                    <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
+                </div>
+            ))}
+        </div>
+    );
 };
 
 export default Events;
