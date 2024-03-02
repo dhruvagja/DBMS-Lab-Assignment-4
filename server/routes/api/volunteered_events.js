@@ -5,7 +5,10 @@ import express from 'express';
 import pool from '../../db.js';
 const router = express.Router();
 // display all volunteered events by volunteer
-router.get('/:id', async (req, res) => {
+
+import authenticateToken from '../../auth.js';
+
+router.get('/:id', authenticateToken, async (req, res) => {
     try{
         const id = req.params.id;
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);

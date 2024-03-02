@@ -25,8 +25,5 @@ const admin = new AdminJS({})
 
 const adminRouter = AdminJSExpress.buildRouter(admin)
 
-
-
-
 export default adminRouter;
 
