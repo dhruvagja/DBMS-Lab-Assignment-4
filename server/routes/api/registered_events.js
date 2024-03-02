@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
         const role = user.rows[0].role;
         if(role === 'student'){
-            const allRegisteredEvents = await pool.query("SELECT event FROM event, student_participates where event.eid = student_participates.eid and student_participates.roll = $1", [id]);
+            const allRegisteredEvents = await pool.query("SELECT * FROM event, student_participates where event.eid = student_participates.eid and student_participates.roll = $1", [id]);
             res.json(allRegisteredEvents.rows);
         }
         // organizer will get events managed by him
@@ -52,7 +52,7 @@ router.get('/:id', async (req, res) => {
         //     res.json(allRegisteredEvents.rows);
         // }
         else if(role === 'participant'){
-            const allRegisteredEvents = await pool.query("SELECT event FROM event, event_has_participant where event.eid = event_has_participant.eid and participant.pid = $1", [id]);
+            const allRegisteredEvents = await pool.query("SELECT * FROM event, event_has_participant where event.eid = event_has_participant.eid and participant.pid = $1", [id]);
             res.json(allRegisteredEvents.rows);
         }
         else{

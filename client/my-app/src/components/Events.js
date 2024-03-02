@@ -37,6 +37,7 @@ function Events() {
     }, []);
 
     console.log(events);
+    
 
 return (
     <div className="event-container">
