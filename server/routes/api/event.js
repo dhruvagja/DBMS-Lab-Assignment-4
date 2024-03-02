@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
+import pool from '../../db.js';
 const router = express.Router();
-const pool = require('../../db');
 
 // display all events
 router.get('/', async (req, res) => {
@@ -26,4 +26,5 @@ router.get('/:eid', async (req, res) => {
 
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

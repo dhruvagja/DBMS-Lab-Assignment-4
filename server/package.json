@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Server side of College Festival Management Web Application Development",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index",
     "dev": "nodemon index"
@@ -13,11 +14,19 @@
     "nodemon": "^3.1.0"
   },
   "dependencies": {
+    "@adminjs/express": "^6.1.0",
+    "@adminjs/mikroorm": "^3.0.0",
+    "@mikro-orm/core": "^6.1.6",
+    "@mikro-orm/postgresql": "^6.1.6",
+    "adminjs": "^7.7.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.18.2",
+    "express": "^4.18.3",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "tslib": "^2.6.2"
   }
 }

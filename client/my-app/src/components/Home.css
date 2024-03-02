@@ -1,12 +1,12 @@
-/* Home.css */
+
 
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
   display: flex;
-  justify-content: center; /* Center the grid horizontally */
-  align-items: center; /* Center the grid vertically */
+  justify-content: center; 
+  align-items: center; 
   background: linear-gradient(to bottom right, #add8e6, #010112);
   background-repeat: no-repeat;
   background-size: cover;
