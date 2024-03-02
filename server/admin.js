@@ -19,6 +19,30 @@ import express from 'express'
 // }
 
 
+import { MikroORM } from '@mikro-orm/core';
+import * as AdminJSMikroORM from '@adminjs/mikroorm'
+import Owner from './owner.entity.js'
+
+AdminJS.registerAdapter({
+    Resource: AdminJSMikroORM.Resource,
+    Database: AdminJSMikroORM.Database,
+  });
+
+//   const pool = new Pool({
+//     user: "postgres",
+//     password: "12345678",
+//     host: "localhost",
+//     port: 5432,
+//     database: "postgres"
+// });
+const config = {
+    entities: ["postgres"],
+    dbName: '',
+    type: 'postgresql',
+    clientUrl: 'postgres://adminjs:adminjs@localhost:5435/adminjs',
+}
+
+
 const app = express()
 
 const admin = new AdminJS({})
