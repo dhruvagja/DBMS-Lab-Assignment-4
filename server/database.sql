@@ -53,7 +53,7 @@ CREATE TABLE Event_Has_Volunteer (
 
 CREATE TABLE Participant (
     Name VARCHAR(255),
-    PID INT,
+    PID VARCHAR(255),
     CollegeName VARCHAR(255),
     PRIMARY KEY (PID),
     FOREIGN KEY (CollegeName) REFERENCES College(Name)
@@ -69,7 +69,7 @@ CREATE TABLE Student_Participates (
 
 CREATE TABLE Event_Has_Participant (
     EID INT,
-    PID INT,
+    PID VARCHAR(255),
     PRIMARY KEY (EID, PID),
     FOREIGN KEY (EID) REFERENCES Event(EID),
     FOREIGN KEY (PID) REFERENCES Participant(PID) 

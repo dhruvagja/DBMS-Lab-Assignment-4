@@ -26,10 +26,11 @@ router.post('/',  async (req, res) => {
             
             const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
 
+            console.log("Logged in");
+            res.status(200).json({accessToken : accessToken});
 
-            res.json({accessToken : accessToken});
 
-            //res.status(200).send("User found");
+            // res.status(200).send("User found");
 
         }else{
             res.status(500).send("Wrong passoword");

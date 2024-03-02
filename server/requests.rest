@@ -7,5 +7,59 @@
 #     "collegename": "IITB"
 # }
 
-GET  http://localhost:8081/api/participant/
+GET  http://localhost:8081/api/registered_events/21CS10022
 
+
+###
+
+POST http://localhost:8081/api/participant
+Content-Type: application/json
+
+{
+    "name": "Vinendra",
+    "pid": "idk",
+    "collegename": "IITKgp"
+}
+
+###
+
+POST http://localhost:8081/api/registered_events/21CS10022
+Content-Type: application/json
+
+{
+    "eid": 1,
+    "role": "student"
+}
+###
+
+POST http://localhost:8081/api/registered_events/idk
+Content-Type: application/json
+
+{
+    "eid": 1,
+    "role": "participant"
+}
+
+### 
+POST http://localhost:8081/api/event
+Content-Type: application/json
+
+{
+    "eid": 1,
+    "ename": "dance"
+}
+
+
+###
+
+POST http://localhost:8081/signup
+Content-Type: application/json 
+
+
+{
+    "id" : "idk",
+    "password" : "21CS10022",
+    "role" : "participant",
+    "name": "Dhruv",
+    "dept": "CSE"
+}
