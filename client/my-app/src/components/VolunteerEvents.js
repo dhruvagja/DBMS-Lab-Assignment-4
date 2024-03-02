@@ -49,7 +49,10 @@ function VolunteerEvents() {
         //   throw new Error('Failed to fetch data');
         // }
       })
-      .then(data => setvolunteerEvents(data));
+      .then(data => setvolunteerEvents(data))
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
 
   console.log(volunteerEvents);

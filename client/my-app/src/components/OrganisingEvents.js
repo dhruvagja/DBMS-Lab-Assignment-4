@@ -41,7 +41,10 @@ function OrganisingEvents() {
           return res.json();
         }
       })
-      .then(data => setorganisingEvents(data));
+      .then(data => setorganisingEvents(data))
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
 
   console.log(organisingEvents);
