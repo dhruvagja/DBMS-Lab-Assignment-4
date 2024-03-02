@@ -1,7 +1,14 @@
-const express = require('express');
+// const express = require('express');
+// const router = express.Router();
+// const bcrypt = require('bcrypt');
+// const pool = require('./db');
+
+import express from 'express';
+import bcrypt from 'bcrypt';
+import pool from './db.js';
+
+
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const pool = require('./db');
 
 
 router.post('/', async (req, res) => {
@@ -26,4 +33,5 @@ router.post('/', async (req, res) => {
 
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

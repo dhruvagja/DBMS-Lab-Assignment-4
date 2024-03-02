@@ -1,8 +1,13 @@
-const express = require('express');
+// const express = require('express');
+import express from 'express';
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const pool = require('./db');
+// const bcrypt = require('bcrypt');
+// const pool = require('./db');
+import bcrypt from 'bcrypt';
+import pool from './db.js';
+import jwt from 'jsonwebtoken';
 
+import 'dotenv/config';
 
 router.post('/',  async (req, res) => {
 
@@ -16,7 +21,16 @@ router.post('/',  async (req, res) => {
         }
 
         if(bcrypt.compare(req.body.password, user.rows[0].password)){
-            res.status(200).send("User found");
+            
+            const user = { id : id };   
+            
+            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
+
+
+            res.json({accessToken : accessToken});
+
+            //res.status(200).send("User found");
+
         }else{
             res.status(500).send("Wrong passoword");
         }
@@ -29,4 +43,8 @@ router.post('/',  async (req, res) => {
 });
 
 
-module.exports = router;
+
+
+
+// module.exports = router;
+export default router;

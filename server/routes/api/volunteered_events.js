@@ -1,7 +1,9 @@
-const express = require('express');
+// const express = require('express');
+// const router = express.Router();
+// const pool = require('../../db');
+import express from 'express';
+import pool from '../../db.js';
 const router = express.Router();
-const pool = require('../../db');
-
 // display all volunteered events by volunteer
 router.get('/:id', async (req, res) => {
     try{
@@ -21,4 +23,5 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

@@ -1,4 +1,5 @@
-const Pool = require('pg').Pool;
+import * as pg from 'pg'
+const { Pool } = pg.default;
 
 const pool = new Pool({
     user: "21CS10022",
@@ -8,4 +9,5 @@ const pool = new Pool({
     database: "21CS10022"
 });
 
-module.exports = pool;
+// module.exports = pool;
+export default pool;
