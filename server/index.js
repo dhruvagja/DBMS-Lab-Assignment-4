@@ -57,6 +57,8 @@ app.use('/api/event', eventroute);
 // registered events
 app.use('/api/registered_events', registered_eventsroute);
 
+// organized events
+
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
