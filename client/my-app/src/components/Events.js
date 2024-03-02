@@ -92,6 +92,9 @@ function Events() {
             .then(data => {
                 setregisteredEvents(data);
             })
+            .catch(error => {
+                console.log(error);
+            });
 
         // }, []);
 
@@ -126,6 +129,9 @@ function Events() {
             .then(res => res.json())
             .then(data => {
                 console.log(`${data} Registered`);
+            })
+            .catch(error => {
+                console.log(error);
             });
     };
 
@@ -148,7 +154,10 @@ function Events() {
                     //     throw new Error('Failed to fetch data');
                     // }
                 })
-                .then(data => setvolunteerEvents(data));
+                .then(data => setvolunteerEvents(data))
+                .catch(error => {
+                    console.log(error);
+                });
 
         }
 
@@ -164,6 +173,9 @@ function Events() {
             .then(data => {
                 setregisteredEvents(data);
             })
+            .catch(error => {
+                console.log(error);
+            });
 
         if (role === 'student') {
             for (let i = 0; i < volunteerEvents.length; i++) {
@@ -196,6 +208,9 @@ function Events() {
                 .then(res => res.json())
                 .then(data => {
                     console.log(`${data} Volunteered`);
+                })
+                .catch(error => {
+                    console.log(error);
                 });
         }
     };
