@@ -63,6 +63,24 @@ body {
   text-align: center;
 }
 
+.volunteer-button {
+  transition-duration: 0.4s;
+  background-color: #0acd51;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: auto;
+  border-color: black;
+}
+
+.volunteer-button:hover {
+  background-color: #054e29; 
+  color: white;
+}
+
 .button {
   transition-duration: 0.4s;
   background-color: #1e95f7;

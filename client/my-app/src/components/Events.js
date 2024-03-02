@@ -58,22 +58,44 @@ function Events() {
                 console.log(`${data} Registered`);
             });
     };
+    const handleVolunteer = async (eventId) => {
+        // Implement your logic for handling volunteering here
+        // console.log(`Volunteering for event with ID: ${eventId}`);
 
+        const forminfo = {
+            eid: eventId,
+            role: role
+        }
 
-    return (
-        <div className="event-container">
-            {events.map(event => (
-                <div key={event.eid} className="event-box">
-                    <p className="event-name">{event.ename}</p>
-                    <p className="event-date">{formatDate(event.date)}</p>
-                    <p className="event-id">{event.id}</p>
-                    <p className="event-type">{event.type}</p>
-                    <p className="event-description">{event.description}</p>
-                    <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
-                </div>
-            ))}
-        </div>
-    );
+        fetch(`http://localhost:8081/api/volunteered_events/${username}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(forminfo)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(`${data} Volunteered`);
+        });
+    };
+    
+
+return (
+    <div className="event-container">
+        {events.map(event => (
+            <div key={event.eid} className="event-box">
+            <p className="event-name">{event.ename}</p>
+            <p className="event-date">{formatDate(event.date)}</p>
+            <p className="event-id">{event.id}</p>
+            <p className="event-type">{event.type}</p>
+            <p className="event-description">{event.description}</p>
+            <button className="volunteer-button" onClick={()=>handleVolunteer(event.eid)}> Volunteer </button>
+            <button className="button" onClick={()=>handleRegister(event.eid)}> Register </button>
+            </div>
+        ))}
+    </div>
+);
 };
 
 export default Events;
