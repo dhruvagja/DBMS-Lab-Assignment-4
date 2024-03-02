@@ -15,18 +15,18 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
 
-  const [authenticated, setauthenticated] = useState(null);
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("authenticated");
-    if (loggedInUser) {
-      setauthenticated(loggedInUser);
-    }
-  }, []);
+  // const [authenticated, setauthenticated] = useState(null);
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("authenticated");
+  //   if (loggedInUser) {
+  //     setauthenticated(loggedInUser);
+  //   }
+  // }, []);
 
-  if (!authenticated) {
-    return <Navigate replace to="/login" />;
+  // if (!authenticated) {
+  //   return <Navigate replace to="/login" />;
   
-  }
+  // }
 
     // Access user credentials from local storage
     const username = localStorage.getItem('username');
