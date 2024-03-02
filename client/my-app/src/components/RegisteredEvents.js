@@ -75,7 +75,7 @@ function RegisteredEvents() {
 
       <div className="event-container">
         {registeredEvents.map(event => (
-          <div key={event.id} className="event-box">
+          <div key={event.eid} className="event-box">
             <p>{event.ename}</p>
             <p>{event.date}</p>
             <p>{event.type}</p>

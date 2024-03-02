@@ -61,7 +61,7 @@ function OrganisingEvents() {
 
       <div className="event-container">
         {organisingEvents.map(event => (
-          <div key={event.id} className="event-box">
+          <div key={event.eid} className="event-box">
             {event.ename}
             <p>{event.date}</p>
             <p>{event.type}</p>
