@@ -23,17 +23,13 @@ router.post('/', async (req, res) => {
         const hashedPassword = await bcrypt.hashSync(req.body.password, salt);
         
         // NOTE: changed the query to add role
-        await pool.query('BEGIN');
-        await pool.query('COMMIT');
         const newuser = await pool.query("INSERT INTO users (id,password,role) VALUES($1, $2, $3) RETURNING *", [id, hashedPassword, req.body.role]);
         if(req.body.role === 'student'){
             // const roll = req.body.roll;
             const name = req.body.name;
             const dept = req.body.dept;
             const newStudent = await pool.query("INSERT INTO student (roll, name, dept) VALUES($1, $2, $3) RETURNING *", [id, name, dept]);
-            await pool.query('COMMIT');
             const newVolunteer = await pool.query("INSERT INTO volunteer (roll) VALUES($1) RETURNING *", [id]);
-            await pool.query('COMMIT');
             res.json(newStudent);
         }
         else if(req.body.role === 'external'){
@@ -41,7 +37,6 @@ router.post('/', async (req, res) => {
             const collegename = req.body.collegename;
 
             const newParticipant = await pool.query("INSERT INTO participant (name, pid, collegename) VALUES($1, $2, $3) RETURNING *", [name, id, collegename]);
-            pool.query('COMMIT');
             res.json(newParticipant);
            
         }
@@ -49,7 +44,6 @@ router.post('/', async (req, res) => {
         res.status(201).send();
         
     } catch(err){
-        await pool.query('ROLLBACK');
         res.status(400).send(err.message);
     }
 

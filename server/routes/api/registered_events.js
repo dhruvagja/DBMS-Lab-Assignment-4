@@ -18,7 +18,7 @@ router.post('/:id', async (req, res) => {
             const newRegisteredEvent = await pool.query("INSERT INTO student_participates (roll, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
             res.json(newRegisteredEvent);
         }
-        else if(role === 'participant'){
+        else if(role === 'external'){
             const newRegisteredEvent = await pool.query("INSERT INTO event_has_participant (pid, eid) VALUES($1, $2) RETURNING *", [req.params.id, eid]);
             res.json(newRegisteredEvent);
         }
