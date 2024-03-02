@@ -32,8 +32,6 @@ function MainLogin() {
     // }
 
     // sending post request to server
-    console.log(username);
-    console.log(password);
     // Axios.post("http://localhost:8081/login", {
     //     id : username,
     //     password: password,
@@ -71,6 +69,8 @@ function MainLogin() {
         // .then(data => console.log(data));
         .then(data => {
             console.log(`${data} Logged in`);
+            setauthenticated(true);
+            localStorage.setItem('authenticated', true);
             navigate("/");
             // redirect("/");
         });
