@@ -1,4 +1,7 @@
 /* signup.css */
+body{
+    color: white;
+}
 .signup-container {
     width: 420px;
     background: transparent;
@@ -15,6 +18,7 @@
     font-size: 28px;
     text-align: center;
     margin-bottom: 20px;
+    color: white;
 }
 
 .user-type-dropdown {
@@ -53,6 +57,7 @@
 
 .user-fields {
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .user-fields input {
@@ -66,6 +71,9 @@
     color: #fff;
     padding: 20px 45px 20px 20px;
     margin: 5px;
+}
+.user-fields input::placeholder {
+    color: #fff;
 }
 
 .signup-btn {
