@@ -6,6 +6,7 @@ import RegisteredEvents from './components/RegisteredEvents.js';
 import OrganisingEvents from './components/OrganisingEvents.js';
 import VolunteerEvents from './components/VolunteerEvents.js';
 import Logout from './components/Logout.js';
+import Notifications from './components/Notifications.js';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path= "/organising-events" element={<OrganisingEvents />} />
           <Route path= "/volunteer-events" element={<VolunteerEvents />} />
           <Route path= "/logout" element={<Logout />} />
+          <Route path= "/notifications" element={<Notifications />} />
         </Routes>
       
     

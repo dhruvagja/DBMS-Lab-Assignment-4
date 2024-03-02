@@ -1,3 +1,4 @@
+import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 
@@ -36,26 +37,12 @@ export default function Navbar() {
         <Link to="/" className="site-title">
           Home
         </Link>
-        {/* if(role === 'student'){
-        <ul>
-          <CustomLink to="/registered-events">Registered Events</CustomLink>
-          <CustomLink to="/volunteer-events">Volunteering Events</CustomLink>
-        </ul>
-        }
-        else if(role === 'external'){
-        <ul>
-          <CustomLink to="/registered-events">Registered Events</CustomLink>
-        </ul>
-        }
-        else if(role === 'organizer'){
-        <ul>
-          <CustomLink to="/organising-events">Organising Events</CustomLink>
-        </ul>
-        } */}
         {renderLeftLinks()}
       </div>
       <div className="right-links">
+        <Link to ="/notifications"><FaBell className="bell-icon"/></Link>
         <CustomLink to="/logout">Logout</CustomLink>
+        
       </div>
     </nav>
   );
