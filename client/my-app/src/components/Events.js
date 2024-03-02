@@ -2,8 +2,8 @@ import React from 'react';
 import './Home.css';
 
 const events = [
-    { id: 1, name: 'Mega Event' },
-    { id: 2, name: 'Sports Fest' },
+    { id: 1, name: 'Mega Eventsjkglsdbgglkfbg;skgjb;gkb;skad;vkfb;vskjbv;sfdjkvb;kjbv;' },
+    { id: 2, name: 'Sports Festsadfasdfasfnsldkfnsfsdfdf  sd fsf sdf ssdsfsdfsd f                      sdfsdfsf                  sdfsdfs                       sdfsdfsdfs                      ' },
     { id: 3, name: 'Literary Fest' },
     { id: 4, name: 'Tech Fest' },
     { id: 5, name: 'Cultural Fest' }
