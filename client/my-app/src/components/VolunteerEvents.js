@@ -40,6 +40,9 @@ function VolunteerEvents() {
         if (res.ok) {
           return res.json();
         }
+        else{
+          throw new Error('Failed to fetch data');
+        }
       })
       .then(data => setvolunteerEvents(data));
   }, []);
