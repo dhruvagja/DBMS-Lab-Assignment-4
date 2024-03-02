@@ -8,24 +8,27 @@ import VolunteerEvents from './VolunteerEvents';
 import Events from './Events';
 import Logout from './Logout';
 import Navbar from './Navbar';
-import { Navigate } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [authenticated, setauthenticated] = useState();
+  let loggedInUser = false;
+  useEffect(() => {
+    loggedInUser = localStorage.getItem("authenticated");
+    console.log(loggedInUser);
+    if (loggedInUser === "false") {
+      console.log("UNAUTHENTICATED");
+      // return <Navigate replace to="/login" />;
+      navigate("/login");
 
-  // const [authenticated, setauthenticated] = useState(null);
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("authenticated");
-  //   if (loggedInUser) {
-  //     setauthenticated(loggedInUser);
-  //   }
-  // }, []);
+    }
+    console.log(authenticated);
+  }, []);
 
   // if (!authenticated) {
   //   return <Navigate replace to="/login" />;
-  
   // }
 
     // Access user credentials from local storage
@@ -33,6 +36,7 @@ const Home = () => {
     const password = localStorage.getItem('password');
     const role = localStorage.getItem('role');
 
+    console.log(username);
     // You can use username, password, and role as needed within this component
 
     return (
