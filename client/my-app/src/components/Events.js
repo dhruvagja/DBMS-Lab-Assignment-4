@@ -61,6 +61,27 @@ function Events() {
             console.log(`${data} Registered`);
         });
     };
+    const handleVolunteer = async (eventId) => {
+        // Implement your logic for handling volunteering here
+        console.log(`Volunteering for event with ID: ${eventId}`);
+
+        const forminfo = {
+            eid: eventId,
+            role: role
+        }
+
+        fetch(`http://localhost:8081/api/volunteer_events/${username}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(forminfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(`${data} Volunteered`);
+            });
+    };
     
 
 return (
@@ -72,6 +93,7 @@ return (
             <p>{event.id}</p>
             <p>{event.type}</p>
             <p>{event.description}</p>
+            <button className="volunteer-button" onClick={()=>handleVolunteer(event.eid)}> Volunteer </button>
             <button className="button" onClick={()=>handleRegister(event.eid)}> Register </button>
             </div>
         ))}
