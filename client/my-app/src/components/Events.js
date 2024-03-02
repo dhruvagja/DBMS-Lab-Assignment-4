@@ -37,6 +37,11 @@ function Events() {
     }, []);
 
     console.log(events);
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
+
     const handleRegister = (eventId) => {
         // Implement your logic for handling registration here
         console.log(`Registering for event with ID: ${eventId}`);
@@ -49,7 +54,7 @@ return (
         {events.map(event => (
             <div key={event.id} className="event-box">
             {event.ename}
-            <p>{event.date}</p>
+            <p>{formatDate(event.date)}</p>
             <p>{event.type}</p>
             <p>{event.description}</p>
             <button className="button" onClick={() => handleRegister(event.id)}>Register</button>
