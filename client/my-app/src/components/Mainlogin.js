@@ -14,11 +14,13 @@ function MainLogin() {
     const [password, setpassword] = useState("");
     const [authenticated, setauthenticated] = useState(false);
     
-    const users = [{ username: "Jane", password: "testpassword" }];
+    const users = [{ username: "Jane", password: "1234" }];
   const handleLogin = (e) => {
+    console.log(username);
     e.preventDefault()
     const account = users.find((user) => user.username === username);
     if (account && account.password === password) {
+        console.log("Logged in");
         setauthenticated(true)
         localStorage.setItem("authenticated", true);
         navigate("/");
@@ -46,6 +48,7 @@ function MainLogin() {
                          placeholder="Username"
                          value={username}
                          onChange={(e) => setusername(e.target.value)} required/>
+                         
                         <FaUser className='icon'/>
                     </div>
                     <div className="input-box">
