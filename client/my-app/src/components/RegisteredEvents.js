@@ -43,9 +43,9 @@ function RegisteredEvents() {
         if (res.ok) {
           return res.json();
         }
-        else {
-          throw new Error('Failed to fetch data');
-        }
+        // else {
+        //   throw new Error('Failed to fetch data');
+        // }
       })
       .then(data => {
         setregisteredEvents(data);
