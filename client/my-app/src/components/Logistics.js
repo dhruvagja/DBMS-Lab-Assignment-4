@@ -76,11 +76,11 @@ function Logistics() {
                         <span>Hall</span>
                         <span>Room No.</span>
                     </div>
-                    {volunteers.map(logistic => (
+                    {logistics.map(logistic => (
                         <div key={logistic.pid} className="event-item">
-                            <span>{volunteer.pid}</span>
-                            <span>{volunteer.hall}</span>
-                            <span>{volunteer.roomno}</span>
+                            <span>{logistic.pid}</span>
+                            <span>{logistic.hall}</span>
+                            <span>{logistic.roomno}</span>
                         </div>
                     ))}
                 </div>
