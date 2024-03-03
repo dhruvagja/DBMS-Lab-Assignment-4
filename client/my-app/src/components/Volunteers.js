@@ -51,27 +51,9 @@ function Volunteers() {
     return (
         <div>
             <Navbar />
-            <Routes>
-                {/* <Route path="/" element={<Events />} />
-        <Route path="/registered-events" element={<RegisteredEvents />} />
-        <Route path="/organising-events" element={<OrganisingEvents />} />
-        <Route path="/volunteer-events" element={<VolunteerEvents />} />
-        <Route path="/logout" element={<Logout />} /> */}
-            </Routes>
-
-            {/* <div className="event-container">
-        {volunteers.map(volunteer => (
-          <div key={volunteer.eid} className="event-box">
-            <p> eid = {volunteer.eid} </p>
-            <p> roll = {volunteer.roll} </p>
-            <p> ename = {volunteer.ename} </p>
-            <p> date = {formatDate(volunteer.date)} </p>
-            <p> type = {volunteer.type} </p>
             
-          </div>
-        ))}
-      </div> */}
             <div>
+                <h1 style={{ textAlign: 'center' ,color: 'black '}}>List of Volunteers</h1>
                 <div className="event-list">
                     <div className="event-header">
                         <span>EID</span>
@@ -80,7 +62,7 @@ function Volunteers() {
                         <span>Type</span>
                     </div>
                     {volunteers.map(volunteer => (
-                        <div key={volunteer.eid} className="event-item">
+                        <div key={`${volunteer.eid}-${volunteer.roll}`} className="event-item">
                             <span>{volunteer.eid}</span>
                             <span>{volunteer.roll}</span>
                             <span>{volunteer.ename}</span>

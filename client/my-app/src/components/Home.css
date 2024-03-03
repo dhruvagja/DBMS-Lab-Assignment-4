@@ -63,16 +63,19 @@ body {
   text-align: center;
 }
 .event-list {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: left;
+  justify-content: center;
+  margin-top: 50px;
+  margin-right: 180px;
+  margin-bottom: 230px;
 }
 
 .event-header {
   display: flex;
   justify-content: space-between;
-  width: auto;
+  width: 150%;
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
   font-weight: bold;
@@ -87,7 +90,7 @@ body {
 .event-item {
   display: flex;
   justify-content: space-between;
-  width: auto;
+  width: 150%;
   padding: 10px 0;
   border-bottom: 1px solid #eee;
 }

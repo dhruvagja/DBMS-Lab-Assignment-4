@@ -298,8 +298,11 @@ function Events() {
                             <button className="volunteer-button" onClick={() => handleVolunteer(event.eid)}> Volunteer </button>
                             <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
                         </>
-                    ) : (
-                        <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
+                    ) : (role==='external' ? (
+                        <>
+                            <button className="button" onClick={() => handleRegister(event.eid)}> Register </button>
+                        </>
+                    ) : <></>    
                     )}
                 </div>
             ))}

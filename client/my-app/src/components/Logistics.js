@@ -30,7 +30,7 @@ function Logistics() {
       alert("You are not authorized to access this page")
       navigate("/");
     }
-    // console.log(authenticated);
+
   }, []);
 
   const [logistics, setLogistics] = useState([]);
@@ -52,39 +52,23 @@ function Logistics() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        {/* <Route path="/" element={<Events />} />
-        <Route path="/registered-events" element={<RegisteredEvents />} />
-        <Route path="/organising-events" element={<OrganisingEvents />} />
-        <Route path="/volunteer-events" element={<VolunteerEvents />} />
-        <Route path="/logout" element={<Logout />} /> */}
-      </Routes>
-
-      {/* <div className="event-container">
-        {logistics.map(logistic => (
-          <div key={logistic.pid} className="event-box">
-            <p> pid = {logistic.pid} </p>
-            <p> hall = {logistic.hall} </p>
-            <p> room no = {logistic.roomno} </p>
-          </div>
-        ))}
-      </div> */}
-            <div>
-                <div className="event-list">
-                    <div className="event-header">
-                        <span>PID</span>
-                        <span>Hall</span>
-                        <span>Room No.</span>
-                    </div>
-                    {logistics.map(logistic => (
-                        <div key={logistic.pid} className="event-item">
-                            <span>{logistic.pid}</span>
-                            <span>{logistic.hall}</span>
-                            <span>{logistic.roomno}</span>
-                        </div>
-                    ))}
+        <div>
+        <h1 style={{ textAlign: 'center' ,color: 'black '}}>Participant Logistics</h1>
+            <div className="event-list">
+                <div className="event-header">
+                    <span>PID</span>
+                    <span>Hall</span>
+                    <span>Room No.</span>
                 </div>
+                {logistics.map(logistic => (
+                    <div key={logistic.pid} className="event-item">
+                        <span>{logistic.pid}</span>
+                        <span>{logistic.hall}</span>
+                        <span>{logistic.roomno}</span>
+                    </div>
+                ))}
             </div>
+        </div>
     </div>
   );
 }
