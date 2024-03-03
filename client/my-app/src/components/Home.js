@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     loggedInUser = localStorage.getItem("authenticated");
     console.log(loggedInUser);
-    if (loggedInUser === "false") {
+    if (loggedInUser === "false" || loggedInUser === undefined) {
       console.log("UNAUTHENTICATED");
       // return <Navigate replace to="/login" />;
       navigate("/login");

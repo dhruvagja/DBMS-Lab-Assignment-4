@@ -15,6 +15,7 @@ import buildroleResource from './resources/role.js';
 import buildsmanageResource from './resources/student_manage.js';
 import buildsparticipateResource from './resources/student_participates.js';
 import buildvolunteerResource from './resources/volunteer.js';
+import buildlogisticsResource from './resources/logistics.js';
 
 const app = express();
 
@@ -22,7 +23,7 @@ const sequelize = new Sequelize({
   dialect: 'postgres',
   database: 'postgres',
   username: 'postgres',
-  password: '12345678',
+  password: 'vinayak',
   host: 'localhost',
   port: 5432,
 });
@@ -42,6 +43,7 @@ const admin = new AdminJS({
               buildsmanageResource(sequelize),
               buildsparticipateResource(sequelize),
               buildvolunteerResource(sequelize),
+              buildlogisticsResource(sequelize),
               
             ], // add more resources as needed
   rootPath: '/admin',

@@ -22,10 +22,19 @@ const buildcollegeResource = (sequelize) => {
         icon: 'colleges', // Change to the appropriate icon
       },
       properties: {
-        name: { isVisible: { list: true, filter: false, show: true, edit: true } },
-      },
-    },
-  };
+        name:   { isVisible: { list: true, filter: false, show: true, edit: true },
+                    position: 1, 
+                    sort: {
+                        direction: 'asc', 
+                        sortBy: 'name',  
+                    },
+                },
+        address: { isVisible: { list: true, filter: false, show: true, edit: true } },
+      
+     },
+  },
+};
+
 };
 
 export default buildcollegeResource;
