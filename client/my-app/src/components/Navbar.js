@@ -19,6 +19,8 @@ export default function Navbar() {
       return (
         <>
           <CustomLink to="/registered-events">Registered Events</CustomLink>
+          <CustomLink to="/participant-logistics">Logistics </CustomLink>
+
           {/* Add additional links specific to external participants here */}
         </>
       );
