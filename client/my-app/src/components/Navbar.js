@@ -1,12 +1,11 @@
 import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
-const username = localStorage.getItem('username');
-const password = localStorage.getItem('password');
-const role = localStorage.getItem('role');
-
 export default function Navbar() {
+  const username = localStorage.getItem('username');
+  const password = localStorage.getItem('password');
+  const role = localStorage.getItem('role');
+
   function renderLeftLinks() {
     if (role === 'student') {
       return (

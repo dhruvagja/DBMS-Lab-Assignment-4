@@ -36,7 +36,6 @@ const Home = () => {
     const password = localStorage.getItem('password');
     const role = localStorage.getItem('role');
 
-    console.log(username);
     // You can use username, password, and role as needed within this component
 
     return (
