@@ -27,15 +27,10 @@ function ParticpantLogistics() {
       // return <Navigate replace to="/login" />;
       navigate("/login");
     }
-    if (role !== 'organizer') {
-      console.log("UNAUTHORIZED");
-      alert("You are not authorized to access this page")
-      navigate("/");
-    }
     // console.log(authenticated);
   }, []);
 
-  const [participantlogistic, setparticipantLogistis] = useState([]);
+  const [participantlogistic, setparticipantLogistics] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:8081/api/logistics/${username}`)
@@ -44,7 +39,7 @@ function ParticpantLogistics() {
                     return res.json();
                 }
             })
-            .then(data => setparticipantLogistis(data))
+            .then(data => setparticipantLogistics(data))
             .catch(error => {
                 console.log(error);
             });
@@ -63,13 +58,12 @@ function ParticpantLogistics() {
       </Routes>
 
       <div className="event-container">
-        {logistics.map(logistic => (
-          <div key={logistic.pid} className="event-box">
-            <p> pid = {logistic.pid} </p>
-            <p> hall = {logistic.hall} </p>
-            <p> room no = {logistic.roomno} </p>
+        
+          <div key={participantlogistic.pid} className="event-box">
+            <p> pid = {participantlogistic.pid} </p>
+            <p> hall = {participantlogistic.hall} </p>
+            <p> room no = {participantlogistic.roomno} </p>
           </div>
-        ))}
       </div>
     </div>
     
