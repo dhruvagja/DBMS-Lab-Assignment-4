@@ -54,7 +54,7 @@ function Logistics() {
       <Navbar />
         <div>
         <h1 style={{ textAlign: 'center' ,color: 'black '}}>Participant Logistics</h1>
-            <div className="event-list">
+            <div className="p-event-list">
                 <div className="event-header">
                     <span>PID</span>
                     <span>Hall</span>
