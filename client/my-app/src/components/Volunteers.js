@@ -215,7 +215,7 @@ function Volunteers() {
                     el.ename.toLowerCase().includes(props.input) ||
                     el.type.toLowerCase().includes(props.input)
                 )).map((item) => (
-                    <div key={item.eid} className="event-item">
+                    <div key={`${item.eid}-${item.roll}`} className="event-item">
                         <span>{item.eid}</span>
                         <span>{item.roll}</span>
                         <span>{item.ename}</span>
