@@ -52,6 +52,7 @@ router.post('/:id', async (req, res) => {
         const roll = req.params.id;
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [roll]);
         const role = user.rows[0].role;
+        console.log(role);
         if(role === 'student'){
             const newVolunteeredEvent = await pool.query("INSERT INTO event_has_volunteer (eid, roll) VALUES($1, $2) RETURNING *", [eid, roll]);
             res.json(newVolunteeredEvent);
