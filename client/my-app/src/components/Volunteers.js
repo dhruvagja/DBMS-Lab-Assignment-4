@@ -58,10 +58,10 @@ function Volunteers() {
                 <h1 style={{ textAlign: 'center' ,color: 'black '}}>List of Volunteers</h1>
                 <div className="event-list">
                     <div className="event-header">
-                        <span>EID</span>
-                        <span>Role</span>
-                        <span>Ename</span>
-                        <span>Type</span>
+                        <span>Event ID</span>
+                        <span>Roll No.</span>
+                        <span>Event Name</span>
+                        <span>Type of Event</span>
                     </div>
                     {volunteers.map(volunteer => (
                         <div key={`${volunteer.eid}-${volunteer.roll}`} className="event-item">

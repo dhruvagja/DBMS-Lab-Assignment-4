@@ -61,7 +61,7 @@ function ParticpantLogistics() {
             <h1 style={{ textAlign: 'center' ,color: 'black '}}>Your Logistics</h1>
                 <div className="event-list">
                     <div className="event-header">
-                        <span>PID</span>
+                        <span>Participant ID</span>
                         <span>Hall</span>
                         <span>Room No.</span>
                     </div>
