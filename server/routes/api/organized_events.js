@@ -9,17 +9,18 @@ const router = express.Router();
 import authenticateToken from '../../auth.js';
 
 // display all organized events by organizer
-router.get('/:id', authenticateToken, async (req, res) => {
+router.get('/:id', async (req, res) => {
     try{
         const id = req.params.id;
 
-        if(id != req.user.id){
-            res.status(404).json({msg:"page not found"});
-        }
+        // if(id != req.user.id){
+        //     res.status(404).json({msg:"page not found"});
+        // }
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
         const role = user.rows[0].role;
         if(role === 'organizer'){
-            const allOrganizedEvents = await pool.query("SELECT * FROM event JOIN student_manage on event.eid = student_manage.eid where student_manage.roll = $1", [id]);
+            console.log("Organizer");
+            const allOrganizedEvents = await pool.query("SELECT * FROM event, student_manage where event.eid = student_manage.eid and student_manage.roll = $1", [id]);
             res.json(allOrganizedEvents.rows);
         }
         else{

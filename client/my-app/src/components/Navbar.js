@@ -25,7 +25,7 @@ export default function Navbar() {
     } else if(role === 'organizer') {
       return (
         <>
-          <CustomLink to="/organizing-events">Organizing Events</CustomLink>
+          <CustomLink to="/organising-events">Organizing Events</CustomLink>
           {/* Add additional links specific to external participants here */}
         </>
       );

@@ -54,13 +54,13 @@ function OrganisingEvents() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        {/* <Route path="/" element={<Events />} />
+      {/* <Routes>
+        <Route path="/" element={<Events />} />
         <Route path="/registered-events" element={<RegisteredEvents />} />
         <Route path="/organising-events" element={<OrganisingEvents />} />
         <Route path="/volunteer-events" element={<VolunteerEvents />} />
-        <Route path="/logout" element={<Logout />} /> */}
-      </Routes>
+        <Route path="/logout" element={<Logout />} />
+      </Routes> */}
 
       <div className="event-container">
         {organisingEvents.map(event => (
