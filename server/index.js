@@ -66,6 +66,7 @@ app.use('/api/organized_events', organized_eventsroute);
 // volunteered events
 app.use('/api/volunteered_events', volunteered_eventsroute);
 
+
 // logistics
 app.use('/api/logistics', logisticsroute);
 

@@ -31,9 +31,11 @@ function Volunteers() {
     const [volunteers, setVolunteers] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:8081/api/volunteered_events`)
+        const username = localStorage.getItem('username');
+        fetch(`http://localhost:8081/api/volunteered_events/${username}`)
             .then(res => {
                 if (res.ok) {
+                    
                     return res.json();
                 }
             })
