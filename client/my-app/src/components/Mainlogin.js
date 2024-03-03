@@ -13,6 +13,7 @@ function MainLogin() {
 
     const navigate = useNavigate();
     useEffect(() => {
+        
         if (localStorage.getItem('authenticated') === "true") {
             navigate("/");
         }

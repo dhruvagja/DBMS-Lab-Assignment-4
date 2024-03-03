@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     loggedInUser = localStorage.getItem("authenticated");
     console.log(loggedInUser);
-    if (loggedInUser === "false") {
+    if (loggedInUser === "false" || loggedInUser === undefined) {
       console.log("UNAUTHENTICATED");
       // return <Navigate replace to="/login" />;
       navigate("/login");
@@ -35,6 +35,9 @@ const Home = () => {
     const username = localStorage.getItem('username');
     const password = localStorage.getItem('password');
     const role = localStorage.getItem('role');
+
+    console.log(username);
+    console.log(role);
 
     console.log(username);
     // You can use username, password, and role as needed within this component

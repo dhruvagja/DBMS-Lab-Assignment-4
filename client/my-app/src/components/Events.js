@@ -9,7 +9,7 @@ function Events() {
     const username = localStorage.getItem('username');
     const role = localStorage.getItem('role');
     const accessToken = localStorage.getItem('accessToken');
-
+    
     useEffect(() => {
         const url = new URL('http://localhost:8081/api/event');
         //url.searchParams.append('id', username);
@@ -26,7 +26,10 @@ function Events() {
                 }
 
             })
-            .then(data => setEvents(data))
+            .then(data => {
+                setEvents(data);
+                
+            })
             .catch(error => {
                 console.log(error);
             });
