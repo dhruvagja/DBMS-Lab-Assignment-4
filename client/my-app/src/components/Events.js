@@ -292,9 +292,9 @@ function Events() {
             {events.map(event => (
                 <div key={event.eid} className="event-box">
                     <p className="event-name">{event.ename}</p>
-                    <p className="event-date">{formatDate(event.date)}</p>
-                    <p className="event-id">{event.id}</p>
                     <p className="event-type">{event.type}</p>
+                    <p className="event-date">{formatDate(event.date)}</p>
+                    
                     <p className="event-description">{event.description}</p>
                     {role === 'student' ? (
                         <>

@@ -15,12 +15,14 @@ body {
 
 
 .event-container {
-  margin-top: 100px;
+  margin-top: 80px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 50px;
   grid-column-gap: 50px;
   padding: 10px;
+  max-height: calc(100vh - 80px); /* Adjust based on the height of navbar */
+  
 }
 
 .event-box {
@@ -49,7 +51,7 @@ body {
   text-align: right;
   font-weight: bold;
   font-size: 15px;
-  margin-top: -22px;
+  margin-top: -18px;
 }
 .event-type {
   text-align: left;
