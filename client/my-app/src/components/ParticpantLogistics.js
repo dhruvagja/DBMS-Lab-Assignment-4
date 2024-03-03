@@ -57,14 +57,22 @@ function ParticpantLogistics() {
         <Route path="/logout" element={<Logout />} /> */}
       </Routes>
 
-      <div className="event-container">
-        
-          <div key={participantlogistic.pid} className="event-box">
-            <p> pid = {participantlogistic.pid} </p>
-            <p> hall = {participantlogistic.hall} </p>
-            <p> room no = {participantlogistic.roomno} </p>
-          </div>
-      </div>
+            <div>
+                <div className="event-list">
+                    <div className="event-header">
+                        <span>PID</span>
+                        <span>Hall</span>
+                        <span>Room No.</span>
+                    </div>
+                
+                        <div className="event-item">
+                            <span>{participantlogistic.pid}</span>
+                            <span>{participantlogistic.hall}</span>
+                            <span>{participantlogistic.roomno}</span>
+                        </div>
+                    
+                </div>
+            </div>
     </div>
     
   )

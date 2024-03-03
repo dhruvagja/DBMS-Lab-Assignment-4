@@ -60,7 +60,7 @@ function Logistics() {
         <Route path="/logout" element={<Logout />} /> */}
       </Routes>
 
-      <div className="event-container">
+      {/* <div className="event-container">
         {logistics.map(logistic => (
           <div key={logistic.pid} className="event-box">
             <p> pid = {logistic.pid} </p>
@@ -68,7 +68,23 @@ function Logistics() {
             <p> room no = {logistic.roomno} </p>
           </div>
         ))}
-      </div>
+      </div> */}
+            <div>
+                <div className="event-list">
+                    <div className="event-header">
+                        <span>PID</span>
+                        <span>Hall</span>
+                        <span>Room No.</span>
+                    </div>
+                    {volunteers.map(logistic => (
+                        <div key={logistic.pid} className="event-item">
+                            <span>{volunteer.pid}</span>
+                            <span>{volunteer.hall}</span>
+                            <span>{volunteer.roomno}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
     </div>
   );
 }
