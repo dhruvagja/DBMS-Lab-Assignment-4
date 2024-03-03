@@ -1,16 +1,17 @@
 import { DataTypes } from 'sequelize';
 
+
 const buildvolunteerResource = (sequelize) => {
   return {
     resource: sequelize.define('volunteer', {
       roll: {
         type: DataTypes.STRING,
         primaryKey: true,
-        references: {
-            model: 'student',
-            key: 'roll',
-            targetKey: 'roll',
-        },
+        foreignKey: true,
+        // references: {
+        //   model: 'student',
+        //   key: 'name',
+        // },
       },
       
       
@@ -25,8 +26,11 @@ const buildvolunteerResource = (sequelize) => {
       },
       properties: {
         roll: { isVisible: { list: true, filter: false, show: true, edit: true },
+                
                 position: 1,
                 sort :false,
+                reference : 'student',
+
             },
       },
       

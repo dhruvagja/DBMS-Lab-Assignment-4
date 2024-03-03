@@ -48,28 +48,32 @@ function OrganisingEvents() {
   }, []);
 
   console.log(organisingEvents);
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+};
 
   // add functionality if no events are organised by organiser
 
   return (
     <div>
       <Navbar />
-      <Routes>
-        {/* <Route path="/" element={<Events />} />
+      {/* <Routes>
+        <Route path="/" element={<Events />} />
         <Route path="/registered-events" element={<RegisteredEvents />} />
         <Route path="/organising-events" element={<OrganisingEvents />} />
         <Route path="/volunteer-events" element={<VolunteerEvents />} />
-        <Route path="/logout" element={<Logout />} /> */}
-      </Routes>
+        <Route path="/logout" element={<Logout />} />
+      </Routes> */}
 
       <div className="event-container">
         {organisingEvents.map(event => (
           <div key={event.eid} className="event-box">
-            {event.ename}
-            <p>{event.date}</p>
-            <p>{event.type}</p>
-            <p>{event.description}</p>
-            <button className="button">Register</button>
+            <p className="event-name">{event.ename}</p>
+            <p className="event-date">{formatDate(event.date)}</p>
+            <p className="event-id">{event.id}</p>
+            <p className="event-type">{event.type}</p>
+            <p className="event-description">{event.description}</p>
           </div>
         ))}
       </div>

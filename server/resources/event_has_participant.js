@@ -9,7 +9,6 @@ const buildehpResource = (sequelize) => {
         references: {
             model: 'event',
             key: 'eid',
-            display: 'ename',
         },
       },
       pid: {
@@ -23,7 +22,8 @@ const buildehpResource = (sequelize) => {
       
     }
     , {
-        tableName : 'event_has_participant', // 'student' is the name of the table in the database
+        tableName : 'event_has_participant', 
+        freezeTableName: true,
         timestamps: false,
     }),
     options: {
@@ -31,8 +31,12 @@ const buildehpResource = (sequelize) => {
         icon: 'event participants', // Change to the appropriate icon
       },
       properties: {
-        eid: { isVisible: { list: true, filter: false, show: true, edit: true } },
-        pid: { isVisible: { list: true, filter: false, show: true, edit: true } },
+        eid: { isVisible: { list: true, filter: false, show: true, edit: true }
+                ,position: 1,
+                sort :false,},
+        pid: { isVisible: { list: true, filter: false, show: true, edit: true }
+                ,position: 2,
+                sort :false,},
       },
     },
   };

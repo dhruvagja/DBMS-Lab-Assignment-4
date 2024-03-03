@@ -9,6 +9,19 @@ const router = express.Router();
 import authenticateToken from '../../auth.js';
 
 // add authentication
+
+// display all volunteered events
+router.get('/', async (req, res) => {
+    try{
+        const allVolunteers = await pool.query("SELECT * FROM event_has_volunteer JOIN event ON event_has_volunteer.eid = event.eid");
+        res.json(allVolunteers.rows);
+    }
+    catch (err){
+        console.error(err.message);
+    }
+});
+
+// display all volunteered events by a volunteer
 router.get('/:id', async (req, res) => {
     try{
         const id = req.params.id;

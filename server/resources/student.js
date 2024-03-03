@@ -24,7 +24,16 @@ const buildstudentResource = (sequelize) => {
         icon: 'students', // Change to the appropriate icon
       },
       properties: {
-        roll: { isVisible: { list: true, filter: true, show: true, edit: true } },
+        roll: { isVisible: { list: true, filter: true, show: true, edit: true },
+                position: 1,
+                sort: {
+                    direction: 'asc', 
+                    sortBy: 'roll',  
+                },},
+        name: { isVisible: { list: true, filter: true, show: true, edit: true },
+                position: 2, },
+        dept: { isVisible: { list: true, filter: true, show: true, edit: true },
+                position: 3, },
 
       },
     },
