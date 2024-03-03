@@ -42,7 +42,6 @@ export default function Navbar() {
         {renderLeftLinks()}
       </div>
       <div className="right-links">
-        <Link to ="/notifications"><FaBell className="bell-icon"/></Link>
         <CustomLink to="/logout">Logout</CustomLink>
         
       </div>
