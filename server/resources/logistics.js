@@ -29,7 +29,13 @@ const buildlogisticsResource = (sequelize) => {
         icon: 'logistics', // Change to the appropriate icon
       },
       properties: {
-        name: { isVisible: { list: true, filter: false, show: true, edit: true } },
+        pid: { isVisible: { list: true, filter: false, show: true, edit: true },
+              reference: 'participant',
+              position : 1,},
+        hall: { isVisible: { list: true, filter: false, show: true, edit: true },
+              position : 2, },
+        roomno: { isVisible: { list: true, filter: false, show: true, edit: true },
+              position : 3,},
       },
     },
   };
