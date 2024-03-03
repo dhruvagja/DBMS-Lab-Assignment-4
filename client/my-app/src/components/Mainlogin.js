@@ -74,11 +74,13 @@ function MainLogin() {
         })
         // .then(data => console.log(data));
         .then(data => {
-            console.log(`${data} Logged in`);
+            // console.log(`role ${role}`);
             setauthenticated(true);
             localStorage.setItem('authenticated', true);
             localStorage.setItem('accessToken' , data.accessToken);
-            console.log(data.accessToken);
+            localStorage.setItem('username' , username);
+            localStorage.setItem('role' , role);
+            localStorage.setItem('password', password);
             navigate("/");
             // redirect("/");
         });
