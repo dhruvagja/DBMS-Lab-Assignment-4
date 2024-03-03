@@ -81,3 +81,11 @@ CREATE TABLE users (
     role VARCHAR(255),
     PRIMARY KEY (id)
 );
+
+CREATE TABLE logistics (
+    PID VARCHAR(255),
+    HALL VARCHAR(255),
+    ROOMNO VARCHAR(255),
+    PRIMARY KEY (PID),
+    FOREIGN KEY (PID) REFERENCES Participant(PID)
+);

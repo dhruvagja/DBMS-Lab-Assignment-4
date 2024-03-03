@@ -10,27 +10,27 @@ function Events() {
     const role = localStorage.getItem('role');
     const accessToken = localStorage.getItem('accessToken');
 
-    // useEffect(() => {
-    const url = new URL('http://localhost:8081/api/event');
-    //url.searchParams.append('id', username);
-    fetch(url, {
-        // headers: {
-        //     'Authorization': `Bearer ${accessToken}`,
-        //     'Content-Type': 'application/json'
-        // }
-
-    })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
+    useEffect(() => {
+        const url = new URL('http://localhost:8081/api/event');
+        //url.searchParams.append('id', username);
+        fetch(url, {
+            // headers: {
+            //     'Authorization': `Bearer ${accessToken}`,
+            //     'Content-Type': 'application/json'
+            // }
 
         })
-        .then(data => setEvents(data))
-        .catch(error => {
-            console.log(error);
-        });
-    // }, []);
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+
+            })
+            .then(data => setEvents(data))
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
 
 
     // console.log(events);
@@ -40,6 +40,7 @@ function Events() {
     };
 
     const [volunteerEvents, setvolunteerEvents] = useState([]);
+    useEffect(() => {
     if (role === 'student') {
         fetch(`http://localhost:8081/api/volunteered_events/${username}`)
             .then(res => {
@@ -56,8 +57,12 @@ function Events() {
             });
 
     }
+    }, []);
     const [registeredEvents, setregisteredEvents] = useState([]);
-    fetch(`http://localhost:8081/api/registered_events/${username}`)
+    useEffect(() => {
+    if (role == 'student' || role == 'external') {
+        // useEffect(() => {
+        fetch(`http://localhost:8081/api/registered_events/${username}`)
             .then(res => {
                 if (res.ok) {
                     return res.json();
@@ -72,6 +77,10 @@ function Events() {
             .catch(error => {
                 console.log(error);
             });
+        // }, []);
+
+    }
+    }, []);
 
     localStorage.setItem('volunteered', false);
     localStorage.setItem('registered', false);
@@ -81,13 +90,13 @@ function Events() {
 
     const handleRegister = async (eventId) => {
         // Implement your logic for handling registration here
-        if(localStorage.getItem('registered') === 'true'){
+        if (localStorage.getItem('registered') === 'true') {
             alert("Already registered");
             window.location.reload();
             return;
         }
 
-        if(localStorage.getItem('volunteered') === 'true'){
+        if (localStorage.getItem('volunteered') === 'true') {
             alert("You are already a volunteer for this event!");
             window.location.reload();
             return;
@@ -184,12 +193,12 @@ function Events() {
         // Implement your logic for handling volunteering here
         // console.log(`Volunteering for event with ID: ${eventId}`);
 
-        if(localStorage.getItem('volunteered') === 'true'){
+        if (localStorage.getItem('volunteered') === 'true') {
             alert("Already volunteered");
             window.location.reload();
             return;
         }
-        if(localStorage.getItem('registered') === 'true'){
+        if (localStorage.getItem('registered') === 'true') {
             alert("You have already registered for this event!");
             window.location.reload();
             return;
