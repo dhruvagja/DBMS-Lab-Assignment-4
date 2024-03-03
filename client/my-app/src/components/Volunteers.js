@@ -32,7 +32,7 @@ function Volunteers() {
 
     useEffect(() => {
         const username = localStorage.getItem('username');
-        fetch(`http://localhost:8081/api/volunteered_events/${username}`)
+        fetch(`http://localhost:8081/api/volunteered_events`)
             .then(res => {
                 if (res.ok) {
                     

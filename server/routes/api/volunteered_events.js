@@ -24,16 +24,12 @@ router.get('/', async (req, res) => {
 // display all volunteered events by a volunteer
 router.get('/:id', async (req, res) => {
     try{
-
         const id = req.params.id;
-        console.log(id);
         const user = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
         const role = user.rows[0].role;
-        if(role === 'organizer'){
-            //const allVolunteeredEvents = await pool.query("SELECT * FROM event, event_has_volunteer where event.eid = event_has_volunteer.eid and event_has_volunteer.roll = $1", [id]);
-            const allVolunteeredEvents = await pool.query("SELECT event.eid,event_has_volunteer.roll,event.ename,event.type FROM event_has_volunteer ,event, student_manage WHERE event_has_volunteer.eid = event.eid and event.eid = student_manage.eid and student_manage.roll = $1",[id]);
+        if(role === 'student'){
+            const allVolunteeredEvents = await pool.query("SELECT * FROM event, event_has_volunteer where event.eid = event_has_volunteer.eid and event_has_volunteer.roll = $1", [id]);
             // SELECT * FROM event, student_participates where event.eid = student_participates.eid and student_participates.roll = $1
-            
             res.json(allVolunteeredEvents.rows);
         }
         else{
