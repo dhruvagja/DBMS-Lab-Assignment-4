@@ -65,7 +65,13 @@ function MainLogin() {
         //     }
         //     navigate(`/`);
         // });
-        .then(res => res.json())
+        .then(res => {
+            if(!res.ok){
+                alert("Invalid credentials");
+                window.location.reload();
+            }
+            return res.json();
+        })
         // .then(data => console.log(data));
         .then(data => {
             console.log(`${data} Logged in`);

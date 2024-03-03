@@ -15,7 +15,7 @@ router.post('/',  async (req, res) => {
         const id = req.body.id;
         console.log("pass: ", req.body.password);
         
-        const user = await pool.query("SELECT id,password from users where users.id = $1", [id]);
+        const user = await pool.query("SELECT id,password from users where users.id = $1 and users.role = $2", [id,req.body.role]);
         
         if(user == null){
             res.status(400).send("User not found");
