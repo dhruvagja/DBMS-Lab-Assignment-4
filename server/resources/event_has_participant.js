@@ -9,6 +9,7 @@ const buildehpResource = (sequelize) => {
         references: {
             model: 'event',
             key: 'eid',
+            display: 'ename',
         },
       },
       pid: {

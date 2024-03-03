@@ -15,6 +15,7 @@ import buildroleResource from './resources/role.js';
 import buildsmanageResource from './resources/student_manage.js';
 import buildsparticipateResource from './resources/student_participates.js';
 import buildvolunteerResource from './resources/volunteer.js';
+import buildlogisticsResource from './resources/logistics.js';
 
 const app = express();
 
@@ -42,6 +43,7 @@ const admin = new AdminJS({
               buildsmanageResource(sequelize),
               buildsparticipateResource(sequelize),
               buildvolunteerResource(sequelize),
+              buildlogisticsResource(sequelize),
               
             ], // add more resources as needed
   rootPath: '/admin',
