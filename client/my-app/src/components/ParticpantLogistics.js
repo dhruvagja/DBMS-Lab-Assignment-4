@@ -9,13 +9,15 @@ import Navbar from './Navbar';
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function Logistics() {
+function ParticpantLogistics() {
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
   // 
   let loggedInUser = false;
   const role = localStorage.getItem('role');
+  const username = localStorage.getItem('username');
+
   useEffect(() => {
     loggedInUser = localStorage.getItem("authenticated");
     console.log(loggedInUser);
@@ -25,29 +27,24 @@ function Logistics() {
       // return <Navigate replace to="/login" />;
       navigate("/login");
     }
-    if (role !== 'organizer') {
-      console.log("UNAUTHORIZED");
-      alert("You are not authorized to access this page")
-      navigate("/");
-    }
     // console.log(authenticated);
   }, []);
 
-  const [logistics, setLogistics] = useState([]);
+  const [participantlogistic, setparticipantLogistics] = useState([]);
 
-  useEffect(() => {
-    fetch(`http://localhost:8081/api/logistics`)
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then(data => setLogistics(data))
-      .catch(error => {
-        console.log(error);
-      });
-  }
-  , []);
+    useEffect(() => {
+        fetch(`http://localhost:8081/api/logistics/${username}`)
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
+            .then(data => setparticipantLogistics(data))
+            .catch(error => {
+                console.log(error);
+            });
+    }
+    , []);
 
   return (
     <div>
@@ -60,15 +57,6 @@ function Logistics() {
         <Route path="/logout" element={<Logout />} /> */}
       </Routes>
 
-      {/* <div className="event-container">
-        {logistics.map(logistic => (
-          <div key={logistic.pid} className="event-box">
-            <p> pid = {logistic.pid} </p>
-            <p> hall = {logistic.hall} </p>
-            <p> room no = {logistic.roomno} </p>
-          </div>
-        ))}
-      </div> */}
             <div>
                 <div className="event-list">
                     <div className="event-header">
@@ -76,17 +64,18 @@ function Logistics() {
                         <span>Hall</span>
                         <span>Room No.</span>
                     </div>
-                    {logistics.map(logistic => (
-                        <div key={logistic.pid} className="event-item">
-                            <span>{logistic.pid}</span>
-                            <span>{logistic.hall}</span>
-                            <span>{logistic.roomno}</span>
+                
+                        <div className="event-item">
+                            <span>{participantlogistic.pid}</span>
+                            <span>{participantlogistic.hall}</span>
+                            <span>{participantlogistic.roomno}</span>
                         </div>
-                    ))}
+                    
                 </div>
             </div>
     </div>
-  );
+    
+  )
 }
 
-export default Logistics
+export default ParticpantLogistics

@@ -1,12 +1,11 @@
 import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
-const username = localStorage.getItem('username');
-const password = localStorage.getItem('password');
-const role = localStorage.getItem('role');
-
 export default function Navbar() {
+  const username = localStorage.getItem('username');
+  const password = localStorage.getItem('password');
+  const role = localStorage.getItem('role');
+
   function renderLeftLinks() {
     if (role === 'student') {
       return (
@@ -19,6 +18,8 @@ export default function Navbar() {
       return (
         <>
           <CustomLink to="/registered-events">Registered Events</CustomLink>
+          <CustomLink to="/participant-logistics">Logistics </CustomLink>
+
           {/* Add additional links specific to external participants here */}
         </>
       );
@@ -42,7 +43,6 @@ export default function Navbar() {
         {renderLeftLinks()}
       </div>
       <div className="right-links">
-        <Link to ="/notifications"><FaBell className="bell-icon"/></Link>
         <CustomLink to="/logout">Logout</CustomLink>
         
       </div>
