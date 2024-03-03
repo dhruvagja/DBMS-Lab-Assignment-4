@@ -6,7 +6,6 @@ import RegisteredEvents from './components/RegisteredEvents.js';
 import OrganisingEvents from './components/OrganisingEvents.js';
 import VolunteerEvents from './components/VolunteerEvents.js';
 import Logout from './components/Logout.js';
-import Notifications from './components/Notifications.js';
 import Logistics from './components/Logistics.js';
 import Volunteers from './components/Volunteers.js';
 
@@ -27,7 +26,6 @@ const App = () => {
           <Route path= "/volunteers" element={<Volunteers />} />
           <Route path= "/logistics" element={<Logistics />} />
           <Route path= "/logout" element={<Logout />} />
-          <Route path= "/notifications" element={<Notifications />} />
         </Routes>
       
     
