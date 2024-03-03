@@ -8,6 +8,7 @@ import Logout from './Logout';
 import Navbar from './Navbar';
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import TextField from "@mui/material/TextField";
 
 function Volunteers() {
 
@@ -32,10 +33,10 @@ function Volunteers() {
 
     useEffect(() => {
         const username = localStorage.getItem('username');
-        fetch(`http://localhost:8081/api/volunteered_events/${username}`)
+        fetch(`http://localhost:8081/api/volunteered_events`)
             .then(res => {
                 if (res.ok) {
-                    
+
                     return res.json();
                 }
             })
@@ -53,9 +54,18 @@ function Volunteers() {
     return (
         <div>
             <Navbar />
-            
+
             <div>
-                <h1 style={{ textAlign: 'center' ,color: 'black '}}>List of Volunteers</h1>
+                <h1 style={{ textAlign: 'center', color: 'black ' }}>List of Volunteers</h1>
+                <div className="search">
+                    <TextField
+                        id="outlined-basic"
+                        // onChange={inputHandler}
+                        variant="outlined"
+                        fullWidth
+                        label="Search"
+                    />
+                </div>
                 <div className="event-list">
                     <div className="event-header">
                         <span>Event ID</span>

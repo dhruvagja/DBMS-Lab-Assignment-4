@@ -1,6 +1,7 @@
 import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+
 export default function Navbar() {
   const username = localStorage.getItem('username');
   const password = localStorage.getItem('password');
@@ -30,6 +31,7 @@ export default function Navbar() {
           <CustomLink to="/volunteers">Volunteers</CustomLink>
           <CustomLink to="/logistics">Logistics</CustomLink>
           {/* Add additional links specific to external participants here */}
+          
         </>
       );
     }
