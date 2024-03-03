@@ -18,6 +18,7 @@ import organized_eventsroute from './routes/api/organized_events.js';
 import volunteered_eventsroute from './routes/api/volunteered_events.js';
 import studentroute from './routes/api/student.js';
 import logisticsroute from './routes/api/logistics.js';
+import organizer_has_volunteer_route from './routes/api/organizer_has_volunteer.js';
 import loginroute from './login.js';
 import signuproute from './signup.js';
 import adminRouter from './admin.js';
@@ -70,7 +71,9 @@ app.use('/api/volunteered_events', volunteered_eventsroute);
 // logistics
 app.use('/api/logistics', logisticsroute);
 
-// volunteer
+// organizer_has_volunteers
+app.use('/api/organizer_has_volunteer', organizer_has_volunteer_route);
+
 
 
 const PORT = process.env.PORT || 8081;
