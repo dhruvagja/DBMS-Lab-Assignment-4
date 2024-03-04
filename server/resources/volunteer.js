@@ -8,10 +8,10 @@ const buildvolunteerResource = (sequelize) => {
         type: DataTypes.STRING,
         primaryKey: true,
         foreignKey: true,
-        // references: {
-        //   model: 'student',
-        //   key: 'name',
-        // },
+        references: {
+            model: 'student',
+            key: 'roll',
+        },
       },
       
       
