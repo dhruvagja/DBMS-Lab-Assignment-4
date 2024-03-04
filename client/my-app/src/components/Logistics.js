@@ -142,9 +142,9 @@ const [inputText, setInputText] = useState("");
                         <span>{logistic.roomno}</span>
                     </div>
                 ))} */}
-
+                {LogisticsList({ input: inputText })}
             </div>
-            {LogisticsList({ input: inputText })}
+            
         </div>
     </div>
   );
