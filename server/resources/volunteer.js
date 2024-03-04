@@ -9,8 +9,8 @@ const buildvolunteerResource = (sequelize) => {
         primaryKey: true,
         foreignKey: true,
         references: {
-          model: 'student',
-          key: 'roll',
+            model: 'student',
+            key: 'roll',
         },
       },
       
