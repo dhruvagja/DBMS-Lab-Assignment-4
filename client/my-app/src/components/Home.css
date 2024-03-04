@@ -34,7 +34,7 @@ body {
   display: flex;
     justify-content: center;
     margin-top: 20px; /*Optional: Adjust margin as needed*/
-    transform: translateX(18%);
+    transform: translateX(10%);
     /* transform: translateY(20%); */
     background-color: rgb(228, 226, 226);
     /* border-radius: 50px; */
